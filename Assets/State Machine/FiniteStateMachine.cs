@@ -1,3 +1,5 @@
+using UnityEngine;
+
 namespace NowakArtur97.IntergalacticRacing.StateMachine
 {
     public class FiniteStateMachine
@@ -8,6 +10,8 @@ namespace NowakArtur97.IntergalacticRacing.StateMachine
 
         public void ChangeState(State newState)
         {
+            Debug.Log($"Change state to: {newState.GetType().ToString()}");
+
             CurrentState.Exit();
 
             CurrentState = newState;

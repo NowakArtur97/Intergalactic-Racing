@@ -6,10 +6,12 @@ namespace NowakArtur97.IntergalacticRacing.StateMachine
     {
         protected readonly Entity Entity;
         protected readonly CoreContainer CoreContainer;
+        protected readonly FiniteStateMachine StateMachine;
 
-        public State(Entity Entity, CoreContainer CoreContainer)
+        public State(Entity Entity, FiniteStateMachine StateMachine, CoreContainer CoreContainer)
         {
             this.Entity = Entity;
+            this.StateMachine = StateMachine;
             this.CoreContainer = CoreContainer;
         }
 

@@ -1,6 +1,4 @@
 using NowakArtur97.IntergalacticRacing.StateMachine;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace NowakArtur97.IntergalacticRacing.Core

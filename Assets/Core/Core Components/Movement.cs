@@ -24,7 +24,6 @@ namespace NowakArtur97.IntergalacticRacing.Core
             SetFinalVelocity();
         }
 
-        // TODO: USE
         private void SetFinalVelocity()
         {
             _myRigidbody.velocity = _workspace;

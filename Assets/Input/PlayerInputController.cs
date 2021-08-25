@@ -19,7 +19,6 @@ namespace NowakArtur97.IntergalacticRacing.Input
             _workspace = context.ReadValue<Vector2>();
             _workspace.Set(Mathf.RoundToInt(_workspace.x), Mathf.RoundToInt(_workspace.y));
             MovementInput = _workspace;
-            Debug.Log(MovementInput);
         }
     }
 }
