@@ -18,6 +18,12 @@ namespace NowakArtur97.IntergalacticRacing.Core
 
         public void LogicUpdate() => CurrentVelocity = _myRigidbody.velocity;
 
+        public void SetVelocityZero()
+        {
+            _workspace = Vector2.zero;
+            SetFinalVelocity();
+        }
+
         // TODO: USE
         private void SetFinalVelocity()
         {
@@ -26,4 +32,3 @@ namespace NowakArtur97.IntergalacticRacing.Core
         }
     }
 }
-
