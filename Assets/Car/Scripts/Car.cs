@@ -8,12 +8,11 @@ namespace NowakArtur97.IntergalacticRacing.Core
     [RequireComponent(typeof(Rigidbody2D))]
     public class Car : Entity
     {
-        protected Vector2 MovementInput { get; private set; }
-
-        public PlayerInputController InputController { get; private set; }
-
         public CarIdleState CarIdleState { get; private set; }
         public CarMoveState CarMoveState { get; private set; }
+
+        public PlayerInputController InputController { get; private set; }
+        public Vector2 MovementInput { get; private set; }
 
         protected override void Awake()
         {
@@ -22,10 +21,10 @@ namespace NowakArtur97.IntergalacticRacing.Core
             CarIdleState = new CarIdleState(this, StateMachine, CoreContainer);
             CarMoveState = new CarMoveState(this, StateMachine, CoreContainer);
 
-            StateMachine.Initialize(CarIdleState);
-
             InputController = GetComponent<PlayerInputController>();
         }
+
+        private void Start() => StateMachine.Initialize(CarMoveState);
 
         protected override void Update()
         {

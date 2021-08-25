@@ -25,6 +25,6 @@ namespace NowakArtur97.IntergalacticRacing.StateMachine
             IsMoving = CheckIsMoving();
         }
 
-        private bool CheckIsMoving() => Entity.CoreContainer.Movement.CurrentVelocity != Vector2.zero;
+        protected abstract bool CheckIsMoving();
     }
 }

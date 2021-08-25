@@ -1,4 +1,5 @@
 using NowakArtur97.IntergalacticRacing.Core;
+using UnityEngine;
 
 namespace NowakArtur97.IntergalacticRacing.StateMachine
 {
@@ -22,5 +23,8 @@ namespace NowakArtur97.IntergalacticRacing.StateMachine
                 Entity.StateMachine.ChangeState(_car.CarMoveState);
             }
         }
+
+        // TODO: CarIdleState: Refactor with parent
+        protected override bool CheckIsMoving() => _car.MovementInput.y != 0;
     }
 }

@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace NowakArtur97.IntergalacticRacing.Core
@@ -29,5 +30,9 @@ namespace NowakArtur97.IntergalacticRacing.Core
             _myRigidbody.velocity = _workspace;
             CurrentVelocity = _workspace;
         }
+
+        public void ApplyForce(Vector2 force, ForceMode2D forceMode) => _myRigidbody.AddForce(force, forceMode);
+
+        public void MoveRotation(float rotationAngle) => _myRigidbody.MoveRotation(rotationAngle);
     }
 }
