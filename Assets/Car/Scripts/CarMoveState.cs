@@ -10,6 +10,10 @@ namespace NowakArtur97.IntergalacticRacing.StateMachine
 
         // TODO: CarMoveState: Move to data file(?)
         public float accelerationFactor = 30.0f;
+
+        // TODO: CarMoveState: Move to Drift State
+        // TODO: CarMoveState: Move to data file(?)
+        public float driftFactor = 0.95f;
         public float turnFactor = 3.5f;
         public float rotationAngle;
 
@@ -35,24 +39,39 @@ namespace NowakArtur97.IntergalacticRacing.StateMachine
 
             ApplyEngineForce();
 
+            KillOrthogonalVelocity();
+
             ApplySteering();
         }
 
-        private void ApplyEngineForce()
-        {
-            Vector2 engineForceVector = Entity.transform.up * _car.MovementInput.y * accelerationFactor;
-
-            Entity.CoreContainer.Movement.ApplyForce(engineForceVector, ForceMode2D.Force);
-        }
+        private void ApplyEngineForce() => Entity.CoreContainer.Movement.ApplyForce(Entity.transform.up * _car.MovementInput.y * accelerationFactor, ForceMode2D.Force);
 
         private void ApplySteering()
         {
+            // TODO: Refactor
+            float minSpeedBeforeAllowTurningFactor = (Entity.CoreContainer.Movement.CurrentVelocity.magnitude / 8);
+            minSpeedBeforeAllowTurningFactor = Mathf.Clamp01(minSpeedBeforeAllowTurningFactor);
+
             rotationAngle -= _car.MovementInput.x * turnFactor;
 
             Entity.CoreContainer.Movement.MoveRotation(rotationAngle);
         }
 
+        private void KillOrthogonalVelocity()
+        {
+            Vector2 forwardVelocity = Entity.transform.up
+                * Vector2.Dot(Entity.CoreContainer.Movement.CurrentVelocity, Entity.transform.up);
+
+            Vector2 rightVelocity = Entity.transform.right
+                * Vector2.Dot(Entity.CoreContainer.Movement.CurrentVelocity, Entity.transform.right);
+
+            Entity.CoreContainer.Movement.SetVelocity(forwardVelocity + rightVelocity * driftFactor);
+
+        }
+
         // TODO: CarIdleState: Refactor with parent
-        protected override bool CheckIsNotMoving() => _car.MovementInput.y == 0;
+        // TODO: Refactor
+        protected override bool CheckIsNotMoving() => _car.MovementInput.y == 0
+            && _car.CoreContainer.Movement.CurrentVelocity.magnitude < 1.5f;
     }
 }

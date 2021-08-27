@@ -25,6 +25,18 @@ namespace NowakArtur97.IntergalacticRacing.Core
             SetFinalVelocity();
         }
 
+        public void SetVelocity(Vector2 velocity)
+        {
+            _workspace = velocity;
+            SetFinalVelocity();
+        }
+
+        public void SetVelocityFromForce(Vector2 force)
+        {
+            _workspace = force / _myRigidbody.mass * Time.fixedDeltaTime;
+            SetFinalVelocity();
+        }
+
         private void SetFinalVelocity()
         {
             _myRigidbody.velocity = _workspace;

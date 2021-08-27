@@ -10,7 +10,7 @@ namespace NowakArtur97.IntergalacticRacing.StateMachine
 
         public void ChangeState(State newState)
         {
-            Debug.Log($"Change state to: {newState.GetType().Name}");
+            //Debug.Log($"Change state to: {newState.GetType().Name}");
 
             CurrentState.Exit();
 
