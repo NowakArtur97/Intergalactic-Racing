@@ -2,28 +2,28 @@ using NowakArtur97.IntergalacticRacing.Core;
 
 namespace NowakArtur97.IntergalacticRacing.StateMachine
 {
-    public class CarIdleState : IdleState
+    public class VehicleIdleState : IdleState
     {
         // TODO: CarIdleState: Refactor
-        private Car _car;
+        private Vehicle _vehicle;
 
-        public CarIdleState(Car Entity, FiniteStateMachine StateMachine, CoreContainer CoreContainer)
+        public VehicleIdleState(Vehicle Entity, FiniteStateMachine StateMachine, CoreContainer CoreContainer)
             : base(Entity, StateMachine, CoreContainer)
         {
-            _car = Entity;
+            _vehicle = Entity;
         }
 
         public override void LogicUpdate()
         {
             base.LogicUpdate();
 
-            if (IsMoving)
+            if (IsActive)
             {
-                Entity.StateMachine.ChangeState(_car.CarMoveState);
+                Entity.StateMachine.ChangeState(_vehicle.VehicleMoveState);
             }
         }
 
         // TODO: CarIdleState: Refactor with parent
-        protected override bool CheckIsMoving() => _car.MovementInput.y != 0;
+        protected override bool CheckIsActive() => _vehicle.MovementInput.y != 0;
     }
 }
