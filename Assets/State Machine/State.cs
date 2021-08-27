@@ -5,19 +5,21 @@ namespace NowakArtur97.IntergalacticRacing.StateMachine
     public abstract class State
     {
         protected readonly Entity Entity;
-        protected readonly CoreContainer CoreContainer;
-        protected readonly FiniteStateMachine StateMachine;
 
-        public State(Entity Entity, FiniteStateMachine StateMachine, CoreContainer CoreContainer)
+        protected bool IsExitingState;
+
+        public State(Entity Entity)
         {
             this.Entity = Entity;
-            this.StateMachine = StateMachine;
-            this.CoreContainer = CoreContainer;
         }
 
-        public virtual void Enter() => DoChecks();
+        public virtual void Enter()
+        {
+            DoChecks();
+            IsExitingState = false;
+        }
 
-        public virtual void Exit() { }
+        public virtual void Exit() => IsExitingState = true;
 
         public virtual void LogicUpdate() { }
 

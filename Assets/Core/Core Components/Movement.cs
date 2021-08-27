@@ -43,6 +43,8 @@ namespace NowakArtur97.IntergalacticRacing.Core
             CurrentVelocity = _workspace;
         }
 
+        public bool HasStopped(float magnitude) => CurrentVelocity.magnitude < magnitude;
+
         public void ApplyDrag(float dragAmount, float time) =>
             _myRigidbody.drag = Mathf.Lerp(_myRigidbody.drag, dragAmount, Time.deltaTime * time);
 

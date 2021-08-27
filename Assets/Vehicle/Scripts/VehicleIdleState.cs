@@ -4,11 +4,9 @@ namespace NowakArtur97.IntergalacticRacing.StateMachine
 {
     public class VehicleIdleState : IdleState
     {
-        // TODO: CarIdleState: Refactor
         private Vehicle _vehicle;
 
-        public VehicleIdleState(Vehicle Entity, FiniteStateMachine StateMachine, CoreContainer CoreContainer)
-            : base(Entity, StateMachine, CoreContainer)
+        public VehicleIdleState(Vehicle Entity) : base(Entity)
         {
             _vehicle = Entity;
         }
@@ -17,13 +15,10 @@ namespace NowakArtur97.IntergalacticRacing.StateMachine
         {
             base.LogicUpdate();
 
-            if (IsActive)
+            if (!IsExitingState && _vehicle.VehicleChecks.CheckIsMoving())
             {
-                Entity.StateMachine.ChangeState(_vehicle.VehicleMoveState);
+                Entity.StateMachine.ChangeState(_vehicle.VehicleGoStraightState);
             }
         }
-
-        // TODO: CarIdleState: Refactor with parent
-        protected override bool CheckIsActive() => _vehicle.MovementInput.y != 0;
     }
 }

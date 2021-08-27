@@ -2,9 +2,9 @@ using NowakArtur97.IntergalacticRacing.Core;
 
 namespace NowakArtur97.IntergalacticRacing.StateMachine
 {
-    public abstract class MoveState : State
+    public class SlowDownState : State
     {
-        public MoveState(Entity Entity) : base(Entity)
+        public SlowDownState(Entity Entity) : base(Entity)
         { }
     }
 }
