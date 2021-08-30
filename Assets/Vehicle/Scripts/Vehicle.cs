@@ -8,6 +8,9 @@ namespace NowakArtur97.IntergalacticRacing.Core
     [RequireComponent(typeof(Rigidbody2D))]
     public class Vehicle : Entity
     {
+        [SerializeField] private D_Vehicle _vehicleData;
+        public D_Vehicle VehicleData { get { return _vehicleData; } private set { _vehicleData = value; } }
+
         public VehicleIdleState VehicleIdleState { get; private set; }
         // TODO: REMOVE
         public VehicleMoveState VehicleMoveState { get; private set; }
@@ -61,8 +64,7 @@ namespace NowakArtur97.IntergalacticRacing.Core
 
         public void ApplySteering(float turnFactor)
         {
-            // TODO: Refactor
-            float minSpeedBeforeAllowTurningFactor = CoreContainer.Movement.CurrentVelocity.magnitude / 8;
+            float minSpeedBeforeAllowTurningFactor = CoreContainer.Movement.CurrentVelocity.magnitude / _vehicleData.magnitudeDivider;
             minSpeedBeforeAllowTurningFactor = Mathf.Clamp01(minSpeedBeforeAllowTurningFactor);
 
             RotationAngle -= MovementInput.x * turnFactor;

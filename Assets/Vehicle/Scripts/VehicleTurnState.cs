@@ -6,13 +6,6 @@ namespace NowakArtur97.IntergalacticRacing.StateMachine
     {
         private Vehicle _vehicle;
 
-        // TODO: CarMoveState: Move to data file(?)
-        public float accelerationFactor = 30.0f;
-        public float maxSpeed = 30.0f;
-        public float reverseMaxSpeed = 20f;
-        public float driftFactor = 0.95f;
-        public float turnFactor = 3.5f;
-
         public VehicleTurnState(Vehicle Entity) : base(Entity)
         {
             _vehicle = Entity;
@@ -46,15 +39,15 @@ namespace NowakArtur97.IntergalacticRacing.StateMachine
         {
             base.PhysicsUpdate();
 
-            if (!(_vehicle.VelocityVsUp > maxSpeed && _vehicle.VehicleChecks.CheckIsMovingForward())
-                 && !(_vehicle.VelocityVsUp < -reverseMaxSpeed && _vehicle.VehicleChecks.CheckIsMovingBackward()))
+            if (!(_vehicle.VelocityVsUp > _vehicle.VehicleData.forwardMaxSpeed && _vehicle.VehicleChecks.CheckIsMovingForward())
+                 && !(_vehicle.VelocityVsUp < -_vehicle.VehicleData.reverseMaxSpeed && _vehicle.VehicleChecks.CheckIsMovingBackward()))
             {
-                _vehicle.ApplyEngineForce(accelerationFactor);
+                _vehicle.ApplyEngineForce(_vehicle.VehicleData.forwardAccelerationFactor);
             }
 
-            _vehicle.KillOrthogonalVelocity(driftFactor);
+            _vehicle.KillOrthogonalVelocity(_vehicle.VehicleData.driftFactor);
 
-            _vehicle.ApplySteering(turnFactor);
+            _vehicle.ApplySteering(_vehicle.VehicleData.turnFactor);
         }
     }
 }

@@ -4,13 +4,7 @@ namespace NowakArtur97.IntergalacticRacing.StateMachine
 {
     public class VehicleSlowDownState : SlowDownState
     {
-        Vehicle _vehicle;
-
-        // TODO: Move to data file
-        public float dragAmount = 3;
-        public float accelerationFactor = 30.0f;
-        public float driftFactor = 0.95f;
-        public float turnFactor = 3.5f;
+        private Vehicle _vehicle;
 
         public VehicleSlowDownState(Vehicle Entity) : base(Entity)
         {
@@ -31,8 +25,7 @@ namespace NowakArtur97.IntergalacticRacing.StateMachine
                 {
                     Entity.StateMachine.ChangeState(_vehicle.VehicleGoStraightState);
                 }
-                // TODO: Move to data file
-                else if (_vehicle.CoreContainer.Movement.HasStopped(1.5f))
+                else if (_vehicle.CoreContainer.Movement.HasStopped(_vehicle.VehicleData.idleSpeed))
                 {
                     Entity.StateMachine.ChangeState(_vehicle.VehicleIdleState);
                 }
@@ -43,14 +36,13 @@ namespace NowakArtur97.IntergalacticRacing.StateMachine
         {
             base.PhysicsUpdate();
 
-            _vehicle.ApplyEngineForce(accelerationFactor);
+            _vehicle.ApplyEngineForce(_vehicle.VehicleData.forwardAccelerationFactor);
 
-            _vehicle.KillOrthogonalVelocity(driftFactor);
+            _vehicle.KillOrthogonalVelocity(_vehicle.VehicleData.driftFactor);
 
-            _vehicle.ApplySteering(turnFactor);
+            _vehicle.ApplySteering(_vehicle.VehicleData.turnFactor);
 
-            // TODO: Move to data file
-            Entity.CoreContainer.Movement.ApplyDrag(dragAmount, 3);
+            Entity.CoreContainer.Movement.ApplyDrag(_vehicle.VehicleData.dragAmount, _vehicle.VehicleData.dragTime);
         }
     }
 }
