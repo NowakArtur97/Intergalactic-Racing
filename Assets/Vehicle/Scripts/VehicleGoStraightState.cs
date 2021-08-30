@@ -2,7 +2,7 @@ using NowakArtur97.IntergalacticRacing.Core;
 
 namespace NowakArtur97.IntergalacticRacing.StateMachine
 {
-    public class VehicleGoStraightState : GoStraightState
+    public class VehicleGoStraightState : State
     {
         private Vehicle _vehicle;
 

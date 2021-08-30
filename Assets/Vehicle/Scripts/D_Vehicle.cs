@@ -3,6 +3,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "D_", menuName = "Data/Vehicle")]
 public class D_Vehicle : ScriptableObject
 {
+    // TODO: D_Vehicle: Remove unused
     public float forwardAccelerationFactor = 30.0f;
     public float forwardMaxSpeed = 20.0f;
 

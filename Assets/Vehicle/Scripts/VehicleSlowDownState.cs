@@ -2,7 +2,7 @@ using NowakArtur97.IntergalacticRacing.Core;
 
 namespace NowakArtur97.IntergalacticRacing.StateMachine
 {
-    public class VehicleSlowDownState : SlowDownState
+    public class VehicleSlowDownState : State
     {
         private Vehicle _vehicle;
 

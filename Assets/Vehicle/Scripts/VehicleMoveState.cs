@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace NowakArtur97.IntergalacticRacing.StateMachine
 {
-    public class VehicleMoveState : MoveState
+    public class VehicleMoveState : State
     {
         private Vehicle _vehicle;
 
