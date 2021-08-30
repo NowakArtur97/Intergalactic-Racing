@@ -1,4 +1,5 @@
 using NowakArtur97.IntergalacticRacing.Core;
+using UnityEngine;
 
 namespace NowakArtur97.IntergalacticRacing.StateMachine
 {
@@ -14,6 +15,20 @@ namespace NowakArtur97.IntergalacticRacing.StateMachine
             _vehicle = Entity;
         }
 
+        public override void Enter()
+        {
+            base.Enter();
+
+            _vehicle.WheelSmokePartcileHandler.SetEmissionRate(_vehicle.VehicleData.maxNumberOfSmokeParticles);
+        }
+
+        public override void Exit()
+        {
+            base.Exit();
+
+            _vehicle.WheelSmokePartcileHandler.SetEmissionRate(0);
+        }
+
         public override void LogicUpdate()
         {
             base.LogicUpdate();
@@ -26,6 +41,8 @@ namespace NowakArtur97.IntergalacticRacing.StateMachine
         {
             base.PhysicsUpdate();
 
+            _vehicle.WheelSmokePartcileHandler.SetEmissionRate(_vehicle.IsBraking()
+                ? _vehicle.VehicleData.maxNumberOfSmokeParticles : Mathf.Abs(_vehicle.VelocityVsRight) * _vehicle.VehicleData.smokeParticlesEmissionRate);
             _vehicle.WheelsTrailRendererHandler.EmitTrails(_vehicle.IsTireScreeching());
 
             _vehicle.KillOrthogonalVelocity(_vehicle.VehicleData.driftFactor);

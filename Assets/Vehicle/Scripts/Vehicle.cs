@@ -18,12 +18,13 @@ namespace NowakArtur97.IntergalacticRacing.Core
 
         public PlayerInputController InputController { get; private set; }
         public WheelsTrailRendererHandler WheelsTrailRendererHandler { get; private set; }
+        public WheelSmokePartcileHandler WheelSmokePartcileHandler { get; private set; }
         public Vector2 MovementInput { get; private set; }
 
         public VehicleChecks VehicleChecks { get; private set; }
 
         public float VelocityVsUp { get; private set; }
-        private float _velocityVsRight;
+        public float VelocityVsRight { get; private set; }
         private float _rotationAngle;
 
         protected override void Awake()
@@ -37,6 +38,7 @@ namespace NowakArtur97.IntergalacticRacing.Core
 
             InputController = GetComponent<PlayerInputController>();
             WheelsTrailRendererHandler = GetComponentInChildren<WheelsTrailRendererHandler>();
+            WheelSmokePartcileHandler = GetComponentInChildren<WheelSmokePartcileHandler>();
 
             VehicleChecks = new VehicleChecks(this);
         }
@@ -55,7 +57,7 @@ namespace NowakArtur97.IntergalacticRacing.Core
             base.FixedUpdate();
 
             VelocityVsUp = Vector2.Dot(transform.up, CoreContainer.Movement.CurrentVelocity);
-            _velocityVsRight = Vector2.Dot(transform.right, CoreContainer.Movement.CurrentVelocity);
+            VelocityVsRight = Vector2.Dot(transform.right, CoreContainer.Movement.CurrentVelocity);
         }
 
         public void ApplyEngineForce(float accelerationFactor) => CoreContainer.Movement.ApplyForce(transform.up * MovementInput.y * accelerationFactor);
@@ -78,7 +80,8 @@ namespace NowakArtur97.IntergalacticRacing.Core
             CoreContainer.Movement.SetVelocity(forwardVelocity + rightVelocity * driftFactor);
         }
 
-        public bool IsTireScreeching() => (VehicleChecks.CheckIsMovingBackward() && VelocityVsUp > 0)
-            || Mathf.Abs(_velocityVsRight) >= _vehicleData.tireScreechingMinVelocity;
+        public bool IsBraking() => VehicleChecks.CheckIsMovingBackward() && VelocityVsUp > 0;
+
+        public bool IsTireScreeching() => IsBraking() || Mathf.Abs(VelocityVsRight) >= _vehicleData.tireScreechingMinVelocity;
     }
 }

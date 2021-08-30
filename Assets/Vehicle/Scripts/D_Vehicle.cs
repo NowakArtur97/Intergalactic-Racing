@@ -23,5 +23,8 @@ namespace NowakArtur97.IntergalacticRacing.Core
         public float idleSpeed = 1.5f;
 
         public float tireScreechingMinVelocity = 4.0f;
+
+        public float maxNumberOfSmokeParticles = 100.0f;
+        public float smokeParticlesEmissionRate = 10.0f;
     }
 }

@@ -44,6 +44,9 @@ TagManager:
   - name: Skidmarks
     uniqueID: 895297779
     locked: 0
+  - name: Smoke particles
+    uniqueID: 3490894155
+    locked: 0
   - name: Cars
     uniqueID: 1449178517
     locked: 0

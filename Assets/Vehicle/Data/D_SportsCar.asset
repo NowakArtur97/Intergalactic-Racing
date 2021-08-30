@@ -31,3 +31,4 @@ MonoBehaviour:
   dragTime: 3
   idleSpeed: 1.5
   tireScreechingMinVelocity: 3
+  maxNumberOfSmokeParticles: 100
