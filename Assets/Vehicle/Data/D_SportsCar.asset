@@ -12,12 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee984ad0a1faa8e4e8ebbde55340a453, type: 3}
   m_Name: D_SportsCar
   m_EditorClassIdentifier: 
-  forwardAccelerationFactor: 30
-  forwardMaxSpeed: 20
-  reverseAccelerationFactor: 20
-  reverseMaxSpeed: 10
-  turnAccelerationFactor: 30
-  turnMaxSpeed: 20
+  forwardSpeed:
+    accelerationFactor: 30
+    maxSpeed: 20
+  backwardSpeed:
+    accelerationFactor: 20
+    maxSpeed: 10
+  turningForwardSpeed:
+    accelerationFactor: 30
+    maxSpeed: 20
+  turningBackwardSpeed:
+    accelerationFactor: 30
+    maxSpeed: 20
   driftFactor: 0.95
   turnFactor: 3.5
   magnitudeDivider: 8
