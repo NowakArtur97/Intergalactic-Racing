@@ -21,5 +21,7 @@ namespace NowakArtur97.IntergalacticRacing.Core
         public float dragTime = 3.0f;
 
         public float idleSpeed = 1.5f;
+
+        public float tireScreechingMinVelocity = 4.0f;
     }
 }

@@ -22,6 +22,7 @@ namespace NowakArtur97.IntergalacticRacing.Core
         public VehicleChecks VehicleChecks { get; private set; }
 
         public float VelocityVsUp { get; private set; }
+        public float VelocityVsRight { get; private set; }
         public float RotationAngle { get; private set; }
 
         protected override void Awake()
@@ -52,6 +53,7 @@ namespace NowakArtur97.IntergalacticRacing.Core
             base.FixedUpdate();
 
             VelocityVsUp = Vector2.Dot(transform.up, CoreContainer.Movement.CurrentVelocity);
+            VelocityVsRight = Vector2.Dot(transform.right, CoreContainer.Movement.CurrentVelocity);
         }
 
         public void ApplyEngineForce(float accelerationFactor) => CoreContainer.Movement.ApplyForce(transform.up * MovementInput.y * accelerationFactor);
@@ -68,11 +70,13 @@ namespace NowakArtur97.IntergalacticRacing.Core
 
         public void KillOrthogonalVelocity(float driftFactor)
         {
-            Vector2 forwardVelocity = transform.up * Vector2.Dot(CoreContainer.Movement.CurrentVelocity, transform.up);
-
+            Vector2 forwardVelocity = transform.up * Vector2.Dot(transform.up, CoreContainer.Movement.CurrentVelocity);
             Vector2 rightVelocity = transform.right * Vector2.Dot(CoreContainer.Movement.CurrentVelocity, transform.right);
 
             CoreContainer.Movement.SetVelocity(forwardVelocity + rightVelocity * driftFactor);
         }
+
+        public bool IsTireScreeching() => (VehicleChecks.CheckIsMovingBackward() && VelocityVsUp > 0)
+            || Mathf.Abs(VelocityVsRight) >= _vehicleData.tireScreechingMinVelocity;
     }
 }

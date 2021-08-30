@@ -1,4 +1,5 @@
 using NowakArtur97.IntergalacticRacing.Core;
+using UnityEngine;
 
 namespace NowakArtur97.IntergalacticRacing.StateMachine
 {
@@ -16,7 +17,10 @@ namespace NowakArtur97.IntergalacticRacing.StateMachine
         public virtual void Enter()
         {
             DoChecks();
+
             IsExitingState = false;
+
+            //Debug.Log($"State: {GetType().Name}");
         }
 
         public virtual void Exit() => IsExitingState = true;
