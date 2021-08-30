@@ -2,7 +2,7 @@ using NowakArtur97.IntergalacticRacing.Core;
 
 namespace NowakArtur97.IntergalacticRacing.StateMachine
 {
-    public class VehicleTurnState : State
+    public class VehicleTurnState : VehicleMoveState
     {
         private Vehicle _vehicle;
 
@@ -30,17 +30,14 @@ namespace NowakArtur97.IntergalacticRacing.StateMachine
 
         public override void PhysicsUpdate()
         {
-            base.PhysicsUpdate();
-
-            if (!(_vehicle.VelocityVsUp > _vehicle.VehicleData.forwardMaxSpeed && _vehicle.VehicleChecks.CheckIsMovingForward())
-                 && !(_vehicle.VelocityVsUp < -_vehicle.VehicleData.reverseMaxSpeed && _vehicle.VehicleChecks.CheckIsMovingBackward()))
+            if (!(_vehicle.VelocityVsUp > _vehicle.VehicleData.turningForwardSpeed.maxSpeed && HasForwardVelocity)
+                && !(_vehicle.VelocityVsUp < -_vehicle.VehicleData.turningBackwardSpeed.maxSpeed && HasBackwardVelocity))
             {
-                _vehicle.ApplyEngineForce(_vehicle.VehicleData.forwardAccelerationFactor);
+                _vehicle.ApplyEngineForce(HasForwardVelocity
+                    ? _vehicle.VehicleData.turningForwardSpeed.accelerationFactor : _vehicle.VehicleData.turningBackwardSpeed.accelerationFactor);
             }
 
-            _vehicle.KillOrthogonalVelocity(_vehicle.VehicleData.driftFactor);
-
-            _vehicle.ApplySteering(_vehicle.VehicleData.turnFactor);
+            base.PhysicsUpdate();
         }
     }
 }

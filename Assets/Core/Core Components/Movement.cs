@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 namespace NowakArtur97.IntergalacticRacing.Core
@@ -44,6 +43,10 @@ namespace NowakArtur97.IntergalacticRacing.Core
         }
 
         public bool HasStopped(float magnitude) => CurrentVelocity.magnitude < magnitude;
+
+        public bool HasForwardVelocity() => CurrentVelocity.y > 0;
+
+        public bool HasBackwardVelocity() => CurrentVelocity.y < 0;
 
         public void ApplyDrag(float dragAmount, float time) =>
             _myRigidbody.drag = Mathf.Lerp(_myRigidbody.drag, dragAmount, Time.deltaTime * time);

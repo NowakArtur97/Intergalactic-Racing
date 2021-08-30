@@ -2,7 +2,7 @@ using NowakArtur97.IntergalacticRacing.Core;
 
 namespace NowakArtur97.IntergalacticRacing.StateMachine
 {
-    public class VehicleSlowDownState : State
+    public class VehicleSlowDownState : VehicleMoveState
     {
         private Vehicle _vehicle;
 
@@ -42,12 +42,6 @@ namespace NowakArtur97.IntergalacticRacing.StateMachine
         public override void PhysicsUpdate()
         {
             base.PhysicsUpdate();
-
-            _vehicle.ApplyEngineForce(_vehicle.VehicleData.forwardAccelerationFactor);
-
-            _vehicle.KillOrthogonalVelocity(_vehicle.VehicleData.driftFactor);
-
-            _vehicle.ApplySteering(_vehicle.VehicleData.turnFactor);
 
             Entity.CoreContainer.Movement.ApplyDrag(_vehicle.VehicleData.dragAmount, _vehicle.VehicleData.dragTime);
         }

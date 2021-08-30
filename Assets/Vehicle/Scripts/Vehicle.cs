@@ -12,8 +12,6 @@ namespace NowakArtur97.IntergalacticRacing.Core
         public D_Vehicle VehicleData { get { return _vehicleData; } private set { _vehicleData = value; } }
 
         public VehicleIdleState VehicleIdleState { get; private set; }
-        // TODO: REMOVE
-        public VehicleMoveState VehicleMoveState { get; private set; }
         public VehicleGoStraightState VehicleGoStraightState { get; private set; }
         public VehicleTurnState VehicleTurnState { get; private set; }
         public VehicleSlowDownState VehicleSlowDownState { get; private set; }
@@ -31,8 +29,6 @@ namespace NowakArtur97.IntergalacticRacing.Core
             base.Awake();
 
             VehicleIdleState = new VehicleIdleState(this);
-            // TODO: REMOVE
-            VehicleMoveState = new VehicleMoveState(this);
             VehicleGoStraightState = new VehicleGoStraightState(this);
             VehicleTurnState = new VehicleTurnState(this);
             VehicleSlowDownState = new VehicleSlowDownState(this);
@@ -43,8 +39,6 @@ namespace NowakArtur97.IntergalacticRacing.Core
         }
 
         private void Start() => StateMachine.Initialize(VehicleIdleState);
-        // TODO: REMOVE
-        //private void Start() => StateMachine.Initialize(VehicleMoveState);
 
         protected override void Update()
         {
