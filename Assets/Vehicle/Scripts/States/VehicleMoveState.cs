@@ -26,9 +26,15 @@ namespace NowakArtur97.IntergalacticRacing.StateMachine
         {
             base.PhysicsUpdate();
 
+            _vehicle.WheelsTrailRendererHandler.EmitTrails(_vehicle.IsTireScreeching());
+
             _vehicle.KillOrthogonalVelocity(_vehicle.VehicleData.driftFactor);
 
             _vehicle.ApplySteering(_vehicle.VehicleData.turnFactor);
         }
+
+        public bool HasNotExceededMaximumSpeed(Speed forwardSpeed, Speed backwardSpeed) =>
+            !(_vehicle.VelocityVsUp > forwardSpeed.maxSpeed && HasForwardVelocity)
+            && !(_vehicle.VelocityVsUp < -backwardSpeed.maxSpeed && HasBackwardVelocity);
     }
 }

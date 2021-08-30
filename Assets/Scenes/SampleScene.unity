@@ -441,7 +441,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1405663362}
-  - component: {fileID: 1405663364}
   - component: {fileID: 1405663363}
   m_Layer: 0
   m_Name: WheelTrailRenderer-LW
@@ -563,18 +562,6 @@ TrailRenderer:
   m_MinVertexDistance: 0.1
   m_Autodestruct: 0
   m_Emitting: 1
---- !u!114 &1405663364
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1405663361}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fabd1e54e60586e4d884a992cc48119a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1609475087
 GameObject:
   m_ObjectHideFlags: 0
@@ -584,7 +571,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1609475088}
-  - component: {fileID: 1609475090}
   - component: {fileID: 1609475089}
   m_Layer: 0
   m_Name: WheelTrailRenderer-RW
@@ -706,18 +692,6 @@ TrailRenderer:
   m_MinVertexDistance: 0.1
   m_Autodestruct: 0
   m_Emitting: 1
---- !u!114 &1609475090
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1609475087}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fabd1e54e60586e4d884a992cc48119a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1632269387
 GameObject:
   m_ObjectHideFlags: 0
@@ -727,6 +701,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1632269388}
+  - component: {fileID: 1632269389}
   m_Layer: 0
   m_Name: VFX
   m_TagString: Untagged
@@ -750,6 +725,18 @@ Transform:
   m_Father: {fileID: 591322173}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1632269389
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1632269387}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fabd1e54e60586e4d884a992cc48119a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1714426952
 GameObject:
   m_ObjectHideFlags: 0

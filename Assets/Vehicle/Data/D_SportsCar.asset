@@ -30,3 +30,4 @@ MonoBehaviour:
   dragAmount: 3
   dragTime: 3
   idleSpeed: 1.5
+  tireScreechingMinVelocity: 3

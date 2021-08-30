@@ -1,5 +1,4 @@
 using NowakArtur97.IntergalacticRacing.Core;
-using UnityEngine;
 
 namespace NowakArtur97.IntergalacticRacing.StateMachine
 {
@@ -20,6 +19,7 @@ namespace NowakArtur97.IntergalacticRacing.StateMachine
 
             IsExitingState = false;
 
+            // TODO: State: Remove
             //Debug.Log($"State: {GetType().Name}");
         }
 

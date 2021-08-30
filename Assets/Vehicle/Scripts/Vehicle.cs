@@ -17,13 +17,14 @@ namespace NowakArtur97.IntergalacticRacing.Core
         public VehicleSlowDownState VehicleSlowDownState { get; private set; }
 
         public PlayerInputController InputController { get; private set; }
+        public WheelsTrailRendererHandler WheelsTrailRendererHandler { get; private set; }
         public Vector2 MovementInput { get; private set; }
 
         public VehicleChecks VehicleChecks { get; private set; }
 
         public float VelocityVsUp { get; private set; }
-        public float VelocityVsRight { get; private set; }
-        public float RotationAngle { get; private set; }
+        private float _velocityVsRight;
+        private float _rotationAngle;
 
         protected override void Awake()
         {
@@ -35,6 +36,7 @@ namespace NowakArtur97.IntergalacticRacing.Core
             VehicleSlowDownState = new VehicleSlowDownState(this);
 
             InputController = GetComponent<PlayerInputController>();
+            WheelsTrailRendererHandler = GetComponentInChildren<WheelsTrailRendererHandler>();
 
             VehicleChecks = new VehicleChecks(this);
         }
@@ -53,7 +55,7 @@ namespace NowakArtur97.IntergalacticRacing.Core
             base.FixedUpdate();
 
             VelocityVsUp = Vector2.Dot(transform.up, CoreContainer.Movement.CurrentVelocity);
-            VelocityVsRight = Vector2.Dot(transform.right, CoreContainer.Movement.CurrentVelocity);
+            _velocityVsRight = Vector2.Dot(transform.right, CoreContainer.Movement.CurrentVelocity);
         }
 
         public void ApplyEngineForce(float accelerationFactor) => CoreContainer.Movement.ApplyForce(transform.up * MovementInput.y * accelerationFactor);
@@ -63,9 +65,9 @@ namespace NowakArtur97.IntergalacticRacing.Core
             float minSpeedBeforeAllowTurningFactor = CoreContainer.Movement.CurrentVelocity.magnitude / _vehicleData.magnitudeDivider;
             minSpeedBeforeAllowTurningFactor = Mathf.Clamp01(minSpeedBeforeAllowTurningFactor);
 
-            RotationAngle -= MovementInput.x * turnFactor;
+            _rotationAngle -= MovementInput.x * turnFactor;
 
-            CoreContainer.Movement.MoveRotation(RotationAngle);
+            CoreContainer.Movement.MoveRotation(_rotationAngle);
         }
 
         public void KillOrthogonalVelocity(float driftFactor)
@@ -77,6 +79,6 @@ namespace NowakArtur97.IntergalacticRacing.Core
         }
 
         public bool IsTireScreeching() => (VehicleChecks.CheckIsMovingBackward() && VelocityVsUp > 0)
-            || Mathf.Abs(VelocityVsRight) >= _vehicleData.tireScreechingMinVelocity;
+            || Mathf.Abs(_velocityVsRight) >= _vehicleData.tireScreechingMinVelocity;
     }
 }

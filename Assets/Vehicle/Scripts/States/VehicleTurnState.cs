@@ -30,8 +30,7 @@ namespace NowakArtur97.IntergalacticRacing.StateMachine
 
         public override void PhysicsUpdate()
         {
-            if (!(_vehicle.VelocityVsUp > _vehicle.VehicleData.turningForwardSpeed.maxSpeed && HasForwardVelocity)
-                && !(_vehicle.VelocityVsUp < -_vehicle.VehicleData.turningBackwardSpeed.maxSpeed && HasBackwardVelocity))
+            if (HasNotExceededMaximumSpeed(_vehicle.VehicleData.turningForwardSpeed, _vehicle.VehicleData.turningBackwardSpeed))
             {
                 _vehicle.ApplyEngineForce(HasForwardVelocity
                     ? _vehicle.VehicleData.turningForwardSpeed.accelerationFactor : _vehicle.VehicleData.turningBackwardSpeed.accelerationFactor);
