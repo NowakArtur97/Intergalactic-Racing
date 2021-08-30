@@ -11,23 +11,30 @@ namespace NowakArtur97.IntergalacticRacing.StateMachine
             _vehicle = Entity;
         }
 
+        public override void Exit()
+        {
+            base.Exit();
+
+            Entity.CoreContainer.Movement.ResetDrag();
+        }
+
         public override void LogicUpdate()
         {
             base.LogicUpdate();
 
             if (!IsExitingState)
             {
-                if (_vehicle.VehicleChecks.CheckIsTurning())
+                if (_vehicle.CoreContainer.Movement.HasStopped(_vehicle.VehicleData.idleSpeed))
+                {
+                    Entity.StateMachine.ChangeState(_vehicle.VehicleIdleState);
+                }
+                else if (_vehicle.VehicleChecks.CheckIsTurning())
                 {
                     Entity.StateMachine.ChangeState(_vehicle.VehicleTurnState);
                 }
                 else if (_vehicle.VehicleChecks.CheckIsMoving())
                 {
                     Entity.StateMachine.ChangeState(_vehicle.VehicleGoStraightState);
-                }
-                else if (_vehicle.CoreContainer.Movement.HasStopped(_vehicle.VehicleData.idleSpeed))
-                {
-                    Entity.StateMachine.ChangeState(_vehicle.VehicleIdleState);
                 }
             }
         }

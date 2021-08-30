@@ -11,13 +11,6 @@ namespace NowakArtur97.IntergalacticRacing.StateMachine
             _vehicle = Entity;
         }
 
-        public override void Enter()
-        {
-            base.Enter();
-
-            Entity.CoreContainer.Movement.ResetDrag();
-        }
-
         public override void LogicUpdate()
         {
             base.LogicUpdate();
