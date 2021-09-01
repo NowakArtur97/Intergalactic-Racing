@@ -10,6 +10,9 @@ namespace NowakArtur97.IntergalacticRacing.StateMachine
         protected bool HasForwardVelocity;
         protected bool HasBackwardVelocity;
 
+        private bool _isBraking;
+        private bool _isTireScreeching;
+
         public VehicleMoveState(Vehicle Entity) : base(Entity)
         {
             _vehicle = Entity;
@@ -36,16 +39,25 @@ namespace NowakArtur97.IntergalacticRacing.StateMachine
             HasForwardVelocity = _vehicle.CoreContainer.Movement.HasForwardVelocity();
             HasBackwardVelocity = _vehicle.CoreContainer.Movement.HasBackwardVelocity();
 
+            _vehicle.WheelSmokePartcileHandler.SetEmissionRate(_isBraking
+                ? _vehicle.VehicleData.maxNumberOfSmokeParticles : Mathf.Abs(_vehicle.VelocityVsRight) * _vehicle.VehicleData.smokeParticlesEmissionRate);
+            _vehicle.WheelsTrailRendererHandler.EmitTrails(_isTireScreeching);
+
+            SoundsUpdate();
+        }
+
+        private void SoundsUpdate()
+        {
+            _isBraking = _vehicle.IsBraking();
+            _isTireScreeching = _vehicle.IsTireScreeching();
+
             _vehicle.VehicleSoundsHandler.UpdateEngineSFX(_vehicle.CoreContainer.Movement.CurrentVelocity.magnitude);
+            _vehicle.VehicleSoundsHandler.UpdateTiresScreechingSFX(_vehicle.VelocityVsRight, _isTireScreeching, _isBraking);
         }
 
         public override void PhysicsUpdate()
         {
             base.PhysicsUpdate();
-
-            _vehicle.WheelSmokePartcileHandler.SetEmissionRate(_vehicle.IsBraking()
-                ? _vehicle.VehicleData.maxNumberOfSmokeParticles : Mathf.Abs(_vehicle.VelocityVsRight) * _vehicle.VehicleData.smokeParticlesEmissionRate);
-            _vehicle.WheelsTrailRendererHandler.EmitTrails(_vehicle.IsTireScreeching());
 
             _vehicle.KillOrthogonalVelocity(_vehicle.VehicleData.driftFactor);
 
