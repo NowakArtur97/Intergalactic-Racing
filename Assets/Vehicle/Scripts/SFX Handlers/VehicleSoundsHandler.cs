@@ -2,6 +2,8 @@ using UnityEngine;
 
 namespace NowakArtur97.IntergalacticRacing.Core
 {
+    // TODO: VehicleSoundsHandler: Refactor variables
+    // TODO: VehicleSoundsHandler: Add Flange and Distortion on Audio Mixer
     public class VehicleSoundsHandler : MonoBehaviour
     {
         [Header("Audio Sources")]
@@ -43,6 +45,26 @@ namespace NowakArtur97.IntergalacticRacing.Core
             {
                 _tiresScreechingSource.volume = Mathf.Lerp(_tiresScreechingSource.volume, 0, Time.deltaTime * 10);
             }
+        }
+
+        private void OnCollisionEnter2D(Collision2D collision)
+        {
+            if (!_hitSource.isPlaying)
+            {
+                PlayHitSound(collision);
+            }
+        }
+
+        private void PlayHitSound(Collision2D collision)
+        {
+            float impactRelativeVelocity = collision.relativeVelocity.magnitude;
+
+            float volume = impactRelativeVelocity * 0.035f;
+
+            _hitSource.volume = volume;
+            _hitSource.pitch = Random.Range(0.95f, 1.05f);
+
+            _hitSource.Play();
         }
     }
 }
