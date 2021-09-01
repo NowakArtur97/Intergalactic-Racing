@@ -35,6 +35,8 @@ namespace NowakArtur97.IntergalacticRacing.StateMachine
 
             HasForwardVelocity = _vehicle.CoreContainer.Movement.HasForwardVelocity();
             HasBackwardVelocity = _vehicle.CoreContainer.Movement.HasBackwardVelocity();
+
+            _vehicle.VehicleSoundsHandler.UpdateEngineSFX(_vehicle.CoreContainer.Movement.CurrentVelocity.magnitude);
         }
 
         public override void PhysicsUpdate()

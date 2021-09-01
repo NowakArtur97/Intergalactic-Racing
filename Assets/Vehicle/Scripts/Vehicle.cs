@@ -19,6 +19,7 @@ namespace NowakArtur97.IntergalacticRacing.Core
         public PlayerInputController InputController { get; private set; }
         public WheelsTrailRendererHandler WheelsTrailRendererHandler { get; private set; }
         public WheelSmokePartcileHandler WheelSmokePartcileHandler { get; private set; }
+        public VehicleSoundsHandler VehicleSoundsHandler { get; private set; }
         public Vector2 MovementInput { get; private set; }
 
         public VehicleChecks VehicleChecks { get; private set; }
@@ -39,6 +40,7 @@ namespace NowakArtur97.IntergalacticRacing.Core
             InputController = GetComponent<PlayerInputController>();
             WheelsTrailRendererHandler = GetComponentInChildren<WheelsTrailRendererHandler>();
             WheelSmokePartcileHandler = GetComponentInChildren<WheelSmokePartcileHandler>();
+            VehicleSoundsHandler = GetComponentInChildren<VehicleSoundsHandler>();
 
             VehicleChecks = new VehicleChecks(this);
         }
