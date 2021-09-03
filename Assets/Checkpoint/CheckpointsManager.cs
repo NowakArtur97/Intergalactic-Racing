@@ -10,7 +10,11 @@ namespace NowakArtur97.IntergalacticRacing.Core
 
         private List<Checkpoint> _checkpoints;
 
-        private Dictionary<Vehicle, int> _vehiclesProgress;
+        private Dictionary<Vehicle, int> _vehicleCheckpointsProgress;
+        private Dictionary<Vehicle, int> _vehicleLapsProgress;
+
+        // TODO: Get number of laps from Manager class (?)
+        private int _numberOfLaps = 2;
 
         private void Start()
         {
@@ -25,23 +29,46 @@ namespace NowakArtur97.IntergalacticRacing.Core
                 checkpoint.SetCheckpointsManager(this);
             }
 
-            _vehiclesProgress = _vehicles.ToDictionary(vehicle => vehicle, checkpoint => 0);
+            _vehicleCheckpointsProgress = _vehicles.ToDictionary(vehicle => vehicle, checkpoint => 0);
+            _vehicleLapsProgress = _vehicles.ToDictionary(vehicle => vehicle, checkpoint => -1);
         }
 
         public void VehicleDriveThroughCheckpoint(Checkpoint checkpoint, Vehicle vehicle)
         {
+            int currentLap = _vehicleLapsProgress[vehicle];
             int currentCheckpoint = _checkpoints.IndexOf(checkpoint);
-            int nextCheckpoint = _vehiclesProgress[vehicle];
+            int nextCheckpoint = _vehicleCheckpointsProgress[vehicle];
 
-            if (nextCheckpoint == currentCheckpoint)
+            if (IsCorrectCheckpoint(currentCheckpoint, nextCheckpoint))
             {
-                Debug.Log("Correct");
-                _vehiclesProgress[vehicle] = nextCheckpoint + 1;
+                Debug.Log("Correct Checkpoint");
+                if (IsFullLap(currentCheckpoint))
+                {
+                    _vehicleCheckpointsProgress[vehicle] = 0;
+                    _vehicleLapsProgress[vehicle] = currentLap + 1;
+
+                    Debug.Log("Full Lap");
+                }
+                else
+                {
+                    _vehicleCheckpointsProgress[vehicle] = _vehicleCheckpointsProgress[vehicle] + 1;
+                }
+
+                if (HasFinished(currentLap, currentCheckpoint))
+                {
+                    Debug.Log("Finish");
+                }
             }
             else
             {
-                Debug.Log("Wrong");
+                Debug.Log("Wrong Checkpoint");
             }
         }
+
+        private bool IsCorrectCheckpoint(int currentCheckpoint, int nextCheckpoint) => nextCheckpoint == currentCheckpoint;
+
+        private bool IsFullLap(int checkpoint) => checkpoint + 1 == _checkpoints.Count;
+
+        private bool HasFinished(int currentLap, int currentCheckpoint) => currentCheckpoint == 0 && currentLap == _numberOfLaps;
     }
 }
