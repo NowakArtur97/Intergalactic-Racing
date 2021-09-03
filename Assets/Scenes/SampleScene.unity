@@ -133,7 +133,7 @@ GameObject:
   m_Component:
   - component: {fileID: 38710347}
   - component: {fileID: 38710348}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: Hit SFX
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5287,7 +5287,7 @@ GameObject:
   - component: {fileID: 207940100}
   - component: {fileID: 207940101}
   - component: {fileID: 207940102}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: SFX
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5588,6 +5588,76 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &469494144
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 469494145}
+  - component: {fileID: 469494147}
+  - component: {fileID: 469494146}
+  m_Layer: 8
+  m_Name: Checkpoint (2)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &469494145
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 469494144}
+  m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
+  m_LocalPosition: {x: 21.55, y: 3.55, z: -51.856373}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1781454095}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
+--- !u!61 &469494146
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 469494144}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 2.0995626}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 4.723111}
+  m_EdgeRadius: 0
+--- !u!114 &469494147
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 469494144}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39b9e00107a752c4cb043bf6fd7eee62, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -5681,7 +5751,7 @@ GameObject:
   m_Component:
   - component: {fileID: 588225045}
   - component: {fileID: 588225046}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: Engine SFX
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5810,8 +5880,9 @@ GameObject:
   - component: {fileID: 591322178}
   - component: {fileID: 591322177}
   - component: {fileID: 591322174}
-  - component: {fileID: 591322176}
   - component: {fileID: 591322175}
+  - component: {fileID: 591322176}
+  - component: {fileID: 591322179}
   m_Layer: 6
   m_Name: Car
   m_TagString: Untagged
@@ -5981,6 +6052,47 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _vehicleData: {fileID: 11400000, guid: 81b48d585b3933745a707a43b933c860, type: 2}
+--- !u!60 &591322179
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 591322172}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: -0.1526098, y: 0.5}
+      - {x: -0.34501213, y: 0.36981606}
+      - {x: -0.3472558, y: 0.22453576}
+      - {x: -0.27684474, y: 0.15351255}
+      - {x: -0.28090918, y: -0.27666742}
+      - {x: -0.3402326, y: -0.34453964}
+      - {x: -0.34039348, y: -0.43611217}
+      - {x: -0.27376047, y: -0.499495}
+      - {x: 0.28538188, y: -0.4984495}
+      - {x: 0.34449178, y: -0.44888973}
+      - {x: 0.34440258, y: -0.34341556}
+      - {x: 0.28206298, y: -0.27250773}
+      - {x: 0.27885514, y: 0.15131223}
+      - {x: 0.3403188, y: 0.20649779}
+      - {x: 0.33782095, y: 0.36997962}
+      - {x: 0.15625, y: 0.5}
 --- !u!1 &613081919
 GameObject:
   m_ObjectHideFlags: 0
@@ -6145,7 +6257,7 @@ GameObject:
   m_Component:
   - component: {fileID: 739740279}
   - component: {fileID: 739740280}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: Tires Screeching SFX
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11441,6 +11553,146 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1107727173
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1107727174}
+  - component: {fileID: 1107727176}
+  - component: {fileID: 1107727175}
+  m_Layer: 8
+  m_Name: Checkpoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1107727174
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1107727173}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 3.44, y: 3.29, z: -51.856373}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1781454095}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &1107727175
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1107727173}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 2.0995626}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 4.723111}
+  m_EdgeRadius: 0
+--- !u!114 &1107727176
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1107727173}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39b9e00107a752c4cb043bf6fd7eee62, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &1140801364
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1140801365}
+  - component: {fileID: 1140801367}
+  - component: {fileID: 1140801366}
+  m_Layer: 8
+  m_Name: Checkpoint (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1140801365
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1140801364}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 13.61, y: -6.45, z: -51.856373}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1781454095}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &1140801366
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1140801364}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 2.0995626}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 4.723111}
+  m_EdgeRadius: 0
+--- !u!114 &1140801367
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1140801364}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39b9e00107a752c4cb043bf6fd7eee62, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1382349564
 GameObject:
   m_ObjectHideFlags: 0
@@ -12045,7 +12297,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 5
-      m_TileSpriteIndex: 15
+      m_TileSpriteIndex: 28
       m_TileMatrixIndex: 0
       m_TileColorIndex: 2
       m_TileObjectToInstantiateIndex: 65535
@@ -12205,7 +12457,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 12
-      m_TileSpriteIndex: 22
+      m_TileSpriteIndex: 26
       m_TileMatrixIndex: 0
       m_TileColorIndex: 2
       m_TileObjectToInstantiateIndex: 65535
@@ -13195,7 +13447,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 32
-      m_TileSpriteIndex: 20
+      m_TileSpriteIndex: 25
       m_TileMatrixIndex: 0
       m_TileColorIndex: 2
       m_TileObjectToInstantiateIndex: 65535
@@ -13845,7 +14097,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 19
-      m_TileSpriteIndex: 14
+      m_TileSpriteIndex: 24
       m_TileMatrixIndex: 0
       m_TileColorIndex: 2
       m_TileObjectToInstantiateIndex: 65535
@@ -14195,7 +14447,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 23
-      m_TileSpriteIndex: 12
+      m_TileSpriteIndex: 23
       m_TileMatrixIndex: 0
       m_TileColorIndex: 2
       m_TileObjectToInstantiateIndex: 65535
@@ -14294,14 +14546,14 @@ Tilemap:
     m_Data: {fileID: 0}
   - m_RefCount: 0
     m_Data: {fileID: 0}
-  - m_RefCount: 1
-    m_Data: {fileID: -4241419429871105199, guid: 451f4e7d09160c544b54152249af32be, type: 3}
   - m_RefCount: 0
     m_Data: {fileID: 0}
-  - m_RefCount: 1
-    m_Data: {fileID: 1582915607680017379, guid: 451f4e7d09160c544b54152249af32be, type: 3}
-  - m_RefCount: 1
-    m_Data: {fileID: -8238639359804920009, guid: 451f4e7d09160c544b54152249af32be, type: 3}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   - m_RefCount: 43
     m_Data: {fileID: -8631099929990192056, guid: 451f4e7d09160c544b54152249af32be, type: 3}
   - m_RefCount: 0
@@ -14310,24 +14562,24 @@ Tilemap:
     m_Data: {fileID: 7339236714327294217, guid: 451f4e7d09160c544b54152249af32be, type: 3}
   - m_RefCount: 2
     m_Data: {fileID: -8860081798550610615, guid: 451f4e7d09160c544b54152249af32be, type: 3}
-  - m_RefCount: 1
-    m_Data: {fileID: 7576376261471032608, guid: 451f4e7d09160c544b54152249af32be, type: 3}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   - m_RefCount: 2
     m_Data: {fileID: -6657603533609918708, guid: 451f4e7d09160c544b54152249af32be, type: 3}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
+  - m_RefCount: 1
+    m_Data: {fileID: -4241419429871105199, guid: 451f4e7d09160c544b54152249af32be, type: 3}
+  - m_RefCount: 1
+    m_Data: {fileID: 1582915607680017379, guid: 451f4e7d09160c544b54152249af32be, type: 3}
+  - m_RefCount: 1
+    m_Data: {fileID: 7576376261471032608, guid: 451f4e7d09160c544b54152249af32be, type: 3}
   - m_RefCount: 1
     m_Data: {fileID: -6635546946844347457, guid: 451f4e7d09160c544b54152249af32be, type: 3}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
   - m_RefCount: 2
     m_Data: {fileID: -4396404215821528661, guid: 451f4e7d09160c544b54152249af32be, type: 3}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
+  - m_RefCount: 1
+    m_Data: {fileID: -8238639359804920009, guid: 451f4e7d09160c544b54152249af32be, type: 3}
   - m_RefCount: 1
     m_Data: {fileID: -7655836243663944840, guid: 451f4e7d09160c544b54152249af32be, type: 3}
   - m_RefCount: 1
@@ -15034,6 +15286,54 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37ca9c6c011b28842b79213ab9658f1e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1781454094
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1781454095}
+  - component: {fileID: 1781454096}
+  m_Layer: 0
+  m_Name: Checkpoints Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1781454095
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1781454094}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1107727174}
+  - {fileID: 1140801365}
+  - {fileID: 469494145}
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1781454096
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1781454094}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb31dd1863590ac49b51419b6a8a946a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _vehicles:
+  - {fileID: 591322178}
 --- !u!1 &1901534759
 GameObject:
   m_ObjectHideFlags: 0
