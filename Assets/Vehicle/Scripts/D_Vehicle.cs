@@ -17,8 +17,10 @@ namespace NowakArtur97.IntergalacticRacing.Core
         public float turnFactor = 3.5f;
         public float magnitudeDivider = 8.0f;
 
-        public float dragAmount = 3.0f;
-        public float dragTime = 3.0f;
+        public float idleDragAmount = 2.0f;
+        public float idleDragTime = 2.0f;
+        public float slowDownDragAmount = 3.0f;
+        public float slowDownDragTime = 3.0f;
 
         public float idleSpeed = 1.5f;
 

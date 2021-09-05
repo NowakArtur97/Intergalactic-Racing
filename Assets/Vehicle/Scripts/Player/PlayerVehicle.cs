@@ -33,12 +33,6 @@ namespace NowakArtur97.IntergalacticRacing.Core
             base.Update();
 
             MovementInput = InputController.MovementInput;
-
-            // TODO: REMOVE
-            if (MovementInput.y == 1)
-            {
-                Destroy(gameObject);
-            }
         }
 
         public override bool IsBraking() => base.IsBraking() && VehicleChecks.CheckIsMovingBackward();

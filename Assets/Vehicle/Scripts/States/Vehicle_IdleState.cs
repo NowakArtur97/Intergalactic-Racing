@@ -31,7 +31,8 @@ namespace NowakArtur97.IntergalacticRacing.StateMachine
         {
             base.PhysicsUpdate();
 
-            Entity.CoreContainer.Movement.ApplyDrag(Vehicle.VehicleData.dragAmount, Vehicle.VehicleData.dragTime);
+            Entity.CoreContainer.Movement.ApplyDrag(Vehicle.VehicleData.slowDownDragAmount, Vehicle.VehicleData.slowDownDragTime);
+            Entity.CoreContainer.Movement.ApplyAngularDrag(Vehicle.VehicleData.idleDragAmount, Vehicle.VehicleData.idleDragTime);
         }
 
         public override void DoChecks()

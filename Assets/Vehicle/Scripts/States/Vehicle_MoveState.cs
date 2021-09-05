@@ -60,8 +60,6 @@ namespace NowakArtur97.IntergalacticRacing.StateMachine
         {
             base.DoChecks();
 
-            Debug.Log(Entity is PlayerVehicle);
-
             IsMoving = Vehicle.VehicleChecks.CheckIsMoving();
             IsTurning = Vehicle.VehicleChecks.CheckIsTurning();
             HasStopped = Vehicle.CoreContainer.Movement.HasStopped(Vehicle.VehicleData.idleSpeed);

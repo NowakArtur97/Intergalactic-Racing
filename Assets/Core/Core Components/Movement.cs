@@ -9,11 +9,17 @@ namespace NowakArtur97.IntergalacticRacing.Core
 
         public Vector2 CurrentVelocity { get; private set; }
 
+        private float _defaultDrag;
+        private float _defaultAngularDrag;
+
         protected override void Awake()
         {
             base.Awake();
 
             _myRigidbody = GetComponentInParent<Rigidbody2D>();
+
+            _defaultDrag = _myRigidbody.drag;
+            _defaultAngularDrag = _myRigidbody.angularDrag;
         }
 
         public void LogicUpdate() => CurrentVelocity = _myRigidbody.velocity;
@@ -51,7 +57,14 @@ namespace NowakArtur97.IntergalacticRacing.Core
         public void ApplyDrag(float dragAmount, float time) =>
             _myRigidbody.drag = Mathf.Lerp(_myRigidbody.drag, dragAmount, Time.deltaTime * time);
 
-        public void ResetDrag() => _myRigidbody.drag = 0;
+        public void ApplyAngularDrag(float dragAmount, float time) =>
+           _myRigidbody.angularDrag = Mathf.Lerp(_myRigidbody.drag, dragAmount, Time.deltaTime * time);
+
+        public void ResetDrag()
+        {
+            _myRigidbody.drag = _defaultDrag;
+            _myRigidbody.angularDrag = _defaultAngularDrag;
+        }
 
         public void ApplyForce(Vector2 force, ForceMode2D forceMode = ForceMode2D.Force) => _myRigidbody.AddForce(force, forceMode);
 

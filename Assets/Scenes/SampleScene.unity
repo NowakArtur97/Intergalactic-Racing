@@ -25932,7 +25932,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _vehicles:
   - {fileID: 591322178}
-  - {fileID: 317630765}
+  - {fileID: 0}
 --- !u!1 &1901534759
 GameObject:
   m_ObjectHideFlags: 0
