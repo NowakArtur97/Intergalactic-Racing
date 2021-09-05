@@ -5,8 +5,8 @@ using UnityEngine;
 
 namespace NowakArtur97.IntergalacticRacing.StateMachine
 {
-    // TODO: Refactor with Chase state
-    public class AIFollowWaypointsVehicle_FollowWaypointState : Vehicle_MoveState
+    // TODO: FollowWaypointsState: Refactor with Chase state
+    public class AIFollowWaypointsVehicle_FollowWaypointsState : Vehicle_MoveState
     {
         private AIFollowWaypointsVehicle _aIVehicle;
 
@@ -16,7 +16,7 @@ namespace NowakArtur97.IntergalacticRacing.StateMachine
         private float _angleToTarget;
         private float _steerAmount;
 
-        public AIFollowWaypointsVehicle_FollowWaypointState(AIFollowWaypointsVehicle Entity) : base(Entity)
+        public AIFollowWaypointsVehicle_FollowWaypointsState(AIFollowWaypointsVehicle Entity) : base(Entity)
         {
             _aIVehicle = Entity;
         }
@@ -71,12 +71,15 @@ namespace NowakArtur97.IntergalacticRacing.StateMachine
 
         private float ApplyThrottleOrBrake()
         {
-            Debug.Log(1.05f - Math.Abs(_steerAmount) / 1.0f);
-            return 1.05f - Math.Abs(_steerAmount) / 1.0f;
+            if (Entity.CoreContainer.Movement.IsFasterThan(_currentWaypoint.MaxSpeed))
+            {
+                return 0;
+            }
+
+            return 1;// TODO: FollowWaypointsState: ApplyThrottleOrBrake based on steering .05f - Math.Abs(_steerAmount) / 1.0f;
         }
 
-        private void ChangeWaypoint() =>
-            _currentWaypoint = _currentWaypoint.NextWaypoints[UnityEngine.Random.Range(0, _currentWaypoint.NextWaypoints.Length)];
+        private void ChangeWaypoint() => _currentWaypoint = _currentWaypoint.NextWaypoints[UnityEngine.Random.Range(0, _currentWaypoint.NextWaypoints.Length)];
 
         private bool IsCloseToWaypoint() =>
             (_currentWaypoint.transform.position - Entity.transform.position).magnitude <= _currentWaypoint.MinDistanceToReach;

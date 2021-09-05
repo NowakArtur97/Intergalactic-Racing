@@ -5,7 +5,7 @@ namespace NowakArtur97.IntergalacticRacing.Core
 {
     public class AIFollowWaypointsVehicle : AIVehicle
     {
-        public AIFollowWaypointsVehicle_FollowWaypointState FollowWaypointState { get; private set; }
+        public AIFollowWaypointsVehicle_FollowWaypointsState FollowWaypointState { get; private set; }
 
         [SerializeField] private WaypointNode[] _waypoints;
         public WaypointNode[] Waypoints { get { return _waypoints; } private set { _waypoints = value; } }
@@ -14,7 +14,7 @@ namespace NowakArtur97.IntergalacticRacing.Core
         {
             base.Awake();
 
-            FollowWaypointState = new AIFollowWaypointsVehicle_FollowWaypointState(this);
+            FollowWaypointState = new AIFollowWaypointsVehicle_FollowWaypointsState(this);
         }
 
         private void Start() => StateMachine.Initialize(FollowWaypointState);

@@ -50,6 +50,8 @@ namespace NowakArtur97.IntergalacticRacing.Core
 
         public bool HasStopped(float magnitude) => CurrentVelocity.magnitude < magnitude;
 
+        public bool IsFasterThan(float maxSpeed) => CurrentVelocity.magnitude > maxSpeed;
+
         public bool HasForwardVelocity() => CurrentVelocity.y > 0;
 
         public bool HasBackwardVelocity() => CurrentVelocity.y < 0;
