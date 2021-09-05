@@ -10310,14 +10310,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 317630768}
-  - component: {fileID: 317630767}
-  - component: {fileID: 317630766}
   - component: {fileID: 317630765}
   - component: {fileID: 317630764}
   - component: {fileID: 317630763}
   - component: {fileID: 317630762}
   m_Layer: 6
-  m_Name: Car (1)
+  m_Name: AI Chase Vehicle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10444,68 +10442,9 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 317630761}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Actions: {fileID: -944628639613478452, guid: 02b6beb1e7aec6449b113dbed4492861, type: 3}
-  m_NotificationBehavior: 2
-  m_UIInputModule: {fileID: 0}
-  m_DeviceLostEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_DeviceRegainedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ControlsChangedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ActionEvents:
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 317630766}
-        m_TargetAssemblyTypeName: NowakArtur97.IntergalacticRacing.Input.PlayerInputController,
-          Assembly-CSharp
-        m_MethodName: OnMoveInput
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: f007f5a6-48a6-4ba7-aba9-b946d00a2ce3
-    m_ActionName: Movement/Movement action[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d]
-  m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: 
-  m_DefaultActionMap: Movement
-  m_SplitScreenIndex: -1
-  m_Camera: {fileID: 0}
---- !u!114 &317630766
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 317630761}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6b71e0d91d2a1d84181e2d495137025e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &317630767
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 317630761}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fd3e179df5d57bc46879172a534cfe3d, type: 3}
+  m_Script: {fileID: 11500000, guid: 5d93bf33522e0314dad0ed31ea3c882d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _vehicleData: {fileID: 11400000, guid: 81b48d585b3933745a707a43b933c860, type: 2}
@@ -11214,7 +11153,7 @@ GameObject:
   - component: {fileID: 591322176}
   - component: {fileID: 591322179}
   m_Layer: 6
-  m_Name: Car
+  m_Name: Player Vehicle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11720,7 +11659,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &742808546
 Transform:
   m_ObjectHideFlags: 0
@@ -25993,7 +25932,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _vehicles:
   - {fileID: 591322178}
-  - {fileID: 317630767}
+  - {fileID: 317630765}
 --- !u!1 &1901534759
 GameObject:
   m_ObjectHideFlags: 0

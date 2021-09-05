@@ -1,14 +1,16 @@
 using NowakArtur97.IntergalacticRacing.Input;
 using NowakArtur97.IntergalacticRacing.StateMachine;
+using UnityEngine;
 
 namespace NowakArtur97.IntergalacticRacing.Core
 {
+    [RequireComponent(typeof(PlayerInputController))]
     public class PlayerVehicle : Vehicle
     {
-        public VehicleIdleState VehicleIdleState { get; private set; }
-        public VehicleGoStraightState VehicleGoStraightState { get; private set; }
-        public VehicleTurnState VehicleTurnState { get; private set; }
-        public VehicleSlowDownState VehicleSlowDownState { get; private set; }
+        public VehicleIdleState PlayerVehicleIdleState { get; private set; }
+        public VehicleGoStraightState PlayerVehicleGoStraightState { get; private set; }
+        public VehicleTurnState PlayerVehicleTurnState { get; private set; }
+        public VehicleSlowDownState PlayerVehicleSlowDownState { get; private set; }
 
         public PlayerInputController InputController { get; private set; }
 
@@ -16,15 +18,15 @@ namespace NowakArtur97.IntergalacticRacing.Core
         {
             base.Awake();
 
-            VehicleIdleState = new PlayerVehicleIdleState(this);
-            VehicleGoStraightState = new PlayerVehicleGoStraightState(this);
-            VehicleTurnState = new PlayerVehicleTurnState(this);
-            VehicleSlowDownState = new PlayerVehicleSlowDownState(this);
+            PlayerVehicleIdleState = new PlayerVehicleIdleState(this);
+            PlayerVehicleGoStraightState = new PlayerVehicleGoStraightState(this);
+            PlayerVehicleTurnState = new PlayerVehicleTurnState(this);
+            PlayerVehicleSlowDownState = new PlayerVehicleSlowDownState(this);
 
             InputController = GetComponent<PlayerInputController>();
         }
 
-        private void Start() => StateMachine.Initialize(VehicleIdleState);
+        private void Start() => StateMachine.Initialize(PlayerVehicleIdleState);
 
         protected override void Update()
         {

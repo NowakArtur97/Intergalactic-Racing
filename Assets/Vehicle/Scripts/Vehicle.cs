@@ -3,7 +3,6 @@ using UnityEngine;
 
 namespace NowakArtur97.IntergalacticRacing.Core
 {
-    [RequireComponent(typeof(PlayerInputController))]
     [RequireComponent(typeof(Rigidbody2D))]
     public abstract class Vehicle : Entity
     {

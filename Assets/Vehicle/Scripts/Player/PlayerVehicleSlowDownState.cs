@@ -19,15 +19,15 @@ namespace NowakArtur97.IntergalacticRacing.StateMachine
             {
                 if (HasStopped)
                 {
-                    Entity.StateMachine.ChangeState(_playerVehicle.VehicleIdleState);
+                    Entity.StateMachine.ChangeState(_playerVehicle.PlayerVehicleIdleState);
                 }
                 else if (IsTurning)
                 {
-                    Entity.StateMachine.ChangeState(_playerVehicle.VehicleTurnState);
+                    Entity.StateMachine.ChangeState(_playerVehicle.PlayerVehicleTurnState);
                 }
                 else if (IsMoving)
                 {
-                    Entity.StateMachine.ChangeState(_playerVehicle.VehicleGoStraightState);
+                    Entity.StateMachine.ChangeState(_playerVehicle.PlayerVehicleGoStraightState);
                 }
             }
         }

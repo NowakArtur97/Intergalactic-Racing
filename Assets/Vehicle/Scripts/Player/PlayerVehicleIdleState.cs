@@ -17,7 +17,7 @@ namespace NowakArtur97.IntergalacticRacing.StateMachine
 
             if (!IsExitingState && IsMoving)
             {
-                Entity.StateMachine.ChangeState(_playerVehicle.VehicleGoStraightState);
+                Entity.StateMachine.ChangeState(_playerVehicle.PlayerVehicleGoStraightState);
             }
         }
     }
