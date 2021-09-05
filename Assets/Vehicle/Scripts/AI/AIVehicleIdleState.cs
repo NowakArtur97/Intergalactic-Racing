@@ -10,5 +10,16 @@ namespace NowakArtur97.IntergalacticRacing.StateMachine
         {
             _aIVehicle = Entity;
         }
+
+        public override void LogicUpdate()
+        {
+            base.LogicUpdate();
+
+            if (!IsExitingState && PlayerTransform)
+            {
+                _aIVehicle.AIVehicleChaseState.SetPlayerTransform(PlayerTransform);
+                Entity.StateMachine.ChangeState(_aIVehicle.AIVehicleChaseState);
+            }
+        }
     }
 }

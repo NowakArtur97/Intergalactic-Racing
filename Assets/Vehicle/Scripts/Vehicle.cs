@@ -1,4 +1,3 @@
-using NowakArtur97.IntergalacticRacing.Input;
 using UnityEngine;
 
 namespace NowakArtur97.IntergalacticRacing.Core
@@ -38,7 +37,8 @@ namespace NowakArtur97.IntergalacticRacing.Core
             VelocityVsRight = Vector2.Dot(transform.right, CoreContainer.Movement.CurrentVelocity);
         }
 
-        public void ApplyEngineForce(float accelerationFactor) => CoreContainer.Movement.ApplyForce(transform.up * MovementInput.y * accelerationFactor);
+        public void ApplyEngineForce(float accelerationFactor) =>
+            CoreContainer.Movement.ApplyForce(transform.up * MovementInput.y * accelerationFactor);
 
         public void ApplySteering(float turnFactor)
         {
