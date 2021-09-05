@@ -2,13 +2,12 @@ using NowakArtur97.IntergalacticRacing.Core;
 
 namespace NowakArtur97.IntergalacticRacing.StateMachine
 {
-    public class VehicleIdleState : State
+    public abstract class VehicleIdleState : VehicleState
     {
-        private Vehicle _vehicle;
+        protected bool IsMoving { get; private set; }
 
         public VehicleIdleState(Vehicle Entity) : base(Entity)
         {
-            _vehicle = Entity;
         }
 
         public override void Enter()
@@ -18,14 +17,11 @@ namespace NowakArtur97.IntergalacticRacing.StateMachine
             Entity.CoreContainer.Movement.SetVelocityZero();
         }
 
-        public override void LogicUpdate()
+        public override void DoChecks()
         {
-            base.LogicUpdate();
+            base.DoChecks();
 
-            if (!IsExitingState && _vehicle.VehicleChecks.CheckIsMoving())
-            {
-                Entity.StateMachine.ChangeState(_vehicle.VehicleGoStraightState);
-            }
+            IsMoving = Vehicle.VehicleChecks.CheckIsMoving();
         }
     }
 }

@@ -32,10 +32,10 @@ namespace NowakArtur97.IntergalacticRacing.Core
         {
             base.Awake();
 
-            VehicleIdleState = new VehicleIdleState(this);
-            VehicleGoStraightState = new VehicleGoStraightState(this);
-            VehicleTurnState = new VehicleTurnState(this);
-            VehicleSlowDownState = new VehicleSlowDownState(this);
+            VehicleIdleState = new PlayerVehicleIdleState(this);
+            VehicleGoStraightState = new PlayerVehicleGoStraightState(this);
+            VehicleTurnState = new PlayerVehicleTurnState(this);
+            VehicleSlowDownState = new PlayerVehicleSlowDownState(this);
 
             InputController = GetComponent<PlayerInputController>();
             WheelsTrailRendererHandler = GetComponentInChildren<WheelsTrailRendererHandler>();

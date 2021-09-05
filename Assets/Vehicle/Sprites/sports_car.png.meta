@@ -1,10 +1,13 @@
 fileFormatVersion: 2
-guid: 3ea7afbfbb42c0e4ea8c1987a2b8a6dd
+guid: b799f83ab71083547a03023da83be22c
 TextureImporter:
   internalIDToNameTable:
   - first:
       213: -899690164698152155
     second: sports_car_0
+  - first:
+      213: 8881418242999277436
+    second: sports_car_1
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -122,6 +125,27 @@ TextureImporter:
       bones: []
       spriteID: 523014ddf88a383f0800000000000000
       internalID: -899690164698152155
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sports_car_1
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c7755a316d2214b70800000000000000
+      internalID: 8881418242999277436
       vertices: []
       indices: 
       edges: []
