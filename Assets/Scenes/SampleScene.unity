@@ -10505,10 +10505,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 317630761}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 52f560b7f20e20b428d38559384adaee, type: 3}
+  m_Script: {fileID: 11500000, guid: fd3e179df5d57bc46879172a534cfe3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _vehicleData: {fileID: 11400000, guid: 81b48d585b3933745a707a43b933c860, type: 2}
+  MovementInput: {x: 0, y: 0}
 --- !u!4 &317630768
 Transform:
   m_ObjectHideFlags: 0
@@ -11377,10 +11378,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 591322172}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 52f560b7f20e20b428d38559384adaee, type: 3}
+  m_Script: {fileID: 11500000, guid: fd3e179df5d57bc46879172a534cfe3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _vehicleData: {fileID: 11400000, guid: 81b48d585b3933745a707a43b933c860, type: 2}
+  MovementInput: {x: 0, y: 0}
 --- !u!60 &591322179
 PolygonCollider2D:
   m_ObjectHideFlags: 0

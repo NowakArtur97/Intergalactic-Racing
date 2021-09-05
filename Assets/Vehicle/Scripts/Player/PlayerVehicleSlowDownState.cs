@@ -4,8 +4,11 @@ namespace NowakArtur97.IntergalacticRacing.StateMachine
 {
     public class PlayerVehicleSlowDownState : VehicleSlowDownState
     {
-        public PlayerVehicleSlowDownState(Vehicle Entity) : base(Entity)
+        private PlayerVehicle _playerVehicle;
+
+        public PlayerVehicleSlowDownState(PlayerVehicle Entity) : base(Entity)
         {
+            _playerVehicle = Entity;
         }
 
         public override void LogicUpdate()
@@ -16,15 +19,15 @@ namespace NowakArtur97.IntergalacticRacing.StateMachine
             {
                 if (HasStopped)
                 {
-                    Entity.StateMachine.ChangeState(Vehicle.VehicleIdleState);
+                    Entity.StateMachine.ChangeState(_playerVehicle.VehicleIdleState);
                 }
                 else if (IsTurning)
                 {
-                    Entity.StateMachine.ChangeState(Vehicle.VehicleTurnState);
+                    Entity.StateMachine.ChangeState(_playerVehicle.VehicleTurnState);
                 }
                 else if (IsMoving)
                 {
-                    Entity.StateMachine.ChangeState(Vehicle.VehicleGoStraightState);
+                    Entity.StateMachine.ChangeState(_playerVehicle.VehicleGoStraightState);
                 }
             }
         }

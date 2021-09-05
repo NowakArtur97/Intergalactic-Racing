@@ -1,29 +1,21 @@
 using NowakArtur97.IntergalacticRacing.Input;
-using NowakArtur97.IntergalacticRacing.StateMachine;
 using UnityEngine;
 
 namespace NowakArtur97.IntergalacticRacing.Core
 {
     [RequireComponent(typeof(PlayerInputController))]
     [RequireComponent(typeof(Rigidbody2D))]
-    public class Vehicle : Entity
+    public abstract class Vehicle : Entity
     {
         [SerializeField] private D_Vehicle _vehicleData;
         public D_Vehicle VehicleData { get { return _vehicleData; } private set { _vehicleData = value; } }
 
-        public VehicleIdleState VehicleIdleState { get; private set; }
-        public VehicleGoStraightState VehicleGoStraightState { get; private set; }
-        public VehicleTurnState VehicleTurnState { get; private set; }
-        public VehicleSlowDownState VehicleSlowDownState { get; private set; }
-
-        public PlayerInputController InputController { get; private set; }
         public WheelsTrailRendererHandler WheelsTrailRendererHandler { get; private set; }
         public WheelSmokePartcileHandler WheelSmokePartcileHandler { get; private set; }
         public VehicleSoundsHandler VehicleSoundsHandler { get; private set; }
-        public Vector2 MovementInput { get; private set; }
-
         public VehicleChecks VehicleChecks { get; private set; }
 
+        [HideInInspector] public Vector2 MovementInput;
         public float VelocityVsUp { get; private set; }
         public float VelocityVsRight { get; private set; }
         private float _rotationAngle;
@@ -32,26 +24,11 @@ namespace NowakArtur97.IntergalacticRacing.Core
         {
             base.Awake();
 
-            VehicleIdleState = new PlayerVehicleIdleState(this);
-            VehicleGoStraightState = new PlayerVehicleGoStraightState(this);
-            VehicleTurnState = new PlayerVehicleTurnState(this);
-            VehicleSlowDownState = new PlayerVehicleSlowDownState(this);
-
-            InputController = GetComponent<PlayerInputController>();
             WheelsTrailRendererHandler = GetComponentInChildren<WheelsTrailRendererHandler>();
             WheelSmokePartcileHandler = GetComponentInChildren<WheelSmokePartcileHandler>();
             VehicleSoundsHandler = GetComponentInChildren<VehicleSoundsHandler>();
 
             VehicleChecks = new VehicleChecks(this);
-        }
-
-        private void Start() => StateMachine.Initialize(VehicleIdleState);
-
-        protected override void Update()
-        {
-            base.Update();
-
-            MovementInput = InputController.MovementInput;
         }
 
         protected override void FixedUpdate()
