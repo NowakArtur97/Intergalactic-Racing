@@ -2,9 +2,9 @@ using NowakArtur97.IntergalacticRacing.Core;
 
 namespace NowakArtur97.IntergalacticRacing.StateMachine
 {
-    public abstract class VehicleTurnState : VehicleMoveState
+    public abstract class Vehicle_TurnState : Vehicle_MoveState
     {
-        public VehicleTurnState(Vehicle Entity) : base(Entity)
+        public Vehicle_TurnState(Vehicle Entity) : base(Entity)
         {
         }
 

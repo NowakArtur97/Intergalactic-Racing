@@ -7,10 +7,10 @@ namespace NowakArtur97.IntergalacticRacing.Core
     [RequireComponent(typeof(PlayerInputController))]
     public class PlayerVehicle : Vehicle
     {
-        public VehicleIdleState PlayerVehicleIdleState { get; private set; }
-        public VehicleGoStraightState PlayerVehicleGoStraightState { get; private set; }
-        public VehicleTurnState PlayerVehicleTurnState { get; private set; }
-        public VehicleSlowDownState PlayerVehicleSlowDownState { get; private set; }
+        public Vehicle_IdleState IdleState { get; private set; }
+        public Vehicle_GoStraightState GoStraightState { get; private set; }
+        public Vehicle_TurnState TurnState { get; private set; }
+        public Vehicle_SlowDownState SlowDownState { get; private set; }
 
         public PlayerInputController InputController { get; private set; }
 
@@ -18,21 +18,29 @@ namespace NowakArtur97.IntergalacticRacing.Core
         {
             base.Awake();
 
-            PlayerVehicleIdleState = new PlayerVehicleIdleState(this);
-            PlayerVehicleGoStraightState = new PlayerVehicleGoStraightState(this);
-            PlayerVehicleTurnState = new PlayerVehicleTurnState(this);
-            PlayerVehicleSlowDownState = new PlayerVehicleSlowDownState(this);
+            IdleState = new PlayerVehicle_IdleState(this);
+            GoStraightState = new PlayerVehicle_GoStraightState(this);
+            TurnState = new PlayerVehicle_TurnState(this);
+            SlowDownState = new PlayerVehicle_SlowDownState(this);
 
             InputController = GetComponent<PlayerInputController>();
         }
 
-        private void Start() => StateMachine.Initialize(PlayerVehicleIdleState);
+        private void Start() => StateMachine.Initialize(IdleState);
 
         protected override void Update()
         {
             base.Update();
 
             MovementInput = InputController.MovementInput;
+
+            // TODO: REMOVE
+            if (MovementInput.y == 1)
+            {
+                Destroy(gameObject);
+            }
         }
+
+        public override bool IsBraking() => base.IsBraking() && VehicleChecks.CheckIsMovingBackward();
     }
 }

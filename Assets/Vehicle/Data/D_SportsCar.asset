@@ -27,8 +27,9 @@ MonoBehaviour:
   driftFactor: 0.95
   turnFactor: 3.5
   magnitudeDivider: 8
-  dragAmount: 3
+  dragAmount: 10000000
   dragTime: 3
   idleSpeed: 1.5
   tireScreechingMinVelocity: 3
   maxNumberOfSmokeParticles: 100
+  smokeParticlesEmissionRate: 10

@@ -2,11 +2,11 @@ using NowakArtur97.IntergalacticRacing.Core;
 
 namespace NowakArtur97.IntergalacticRacing.StateMachine
 {
-    public class PlayerVehicleIdleState : VehicleIdleState
+    public class PlayerVehicle_IdleState : Vehicle_IdleState
     {
         private PlayerVehicle _playerVehicle;
 
-        public PlayerVehicleIdleState(PlayerVehicle Entity) : base(Entity)
+        public PlayerVehicle_IdleState(PlayerVehicle Entity) : base(Entity)
         {
             _playerVehicle = Entity;
         }
@@ -17,7 +17,7 @@ namespace NowakArtur97.IntergalacticRacing.StateMachine
 
             if (!IsExitingState && IsMoving)
             {
-                Entity.StateMachine.ChangeState(_playerVehicle.PlayerVehicleGoStraightState);
+                Entity.StateMachine.ChangeState(_playerVehicle.GoStraightState);
             }
         }
     }

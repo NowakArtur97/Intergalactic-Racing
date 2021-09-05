@@ -3,19 +3,19 @@ using UnityEngine;
 
 namespace NowakArtur97.IntergalacticRacing.StateMachine
 {
-    public abstract class VehicleMoveState : VehicleState
+    public abstract class Vehicle_MoveState : VehicleState
     {
         protected bool HasForwardVelocity { get; private set; }
         protected bool HasBackwardVelocity { get; private set; }
 
-        protected bool IsTurning { get; private set; }
         protected bool IsMoving { get; private set; }
+        protected bool IsTurning { get; private set; }
         protected bool HasStopped { get; private set; }
 
         private bool _isBraking;
         private bool _isTireScreeching;
 
-        public VehicleMoveState(Vehicle Entity) : base(Entity)
+        public Vehicle_MoveState(Vehicle Entity) : base(Entity)
         {
         }
 
@@ -60,8 +60,10 @@ namespace NowakArtur97.IntergalacticRacing.StateMachine
         {
             base.DoChecks();
 
-            IsTurning = Vehicle.VehicleChecks.CheckIsTurning();
+            Debug.Log(Entity is PlayerVehicle);
+
             IsMoving = Vehicle.VehicleChecks.CheckIsMoving();
+            IsTurning = Vehicle.VehicleChecks.CheckIsTurning();
             HasStopped = Vehicle.CoreContainer.Movement.HasStopped(Vehicle.VehicleData.idleSpeed);
         }
 

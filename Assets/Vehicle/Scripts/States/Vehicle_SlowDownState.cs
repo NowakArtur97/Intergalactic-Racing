@@ -1,10 +1,14 @@
 using NowakArtur97.IntergalacticRacing.Core;
+using NowakArtur97.IntergalacticRacing.Util;
+using UnityEngine;
 
 namespace NowakArtur97.IntergalacticRacing.StateMachine
 {
-    public abstract class VehicleSlowDownState : VehicleMoveState
+    public abstract class Vehicle_SlowDownState : Vehicle_MoveState
     {
-        public VehicleSlowDownState(Vehicle Entity) : base(Entity)
+        protected Transform PlayerTransform { get; private set; }
+
+        public Vehicle_SlowDownState(Vehicle Entity) : base(Entity)
         {
         }
 
@@ -20,6 +24,13 @@ namespace NowakArtur97.IntergalacticRacing.StateMachine
             base.PhysicsUpdate();
 
             Entity.CoreContainer.Movement.ApplyDrag(Vehicle.VehicleData.dragAmount, Vehicle.VehicleData.dragTime);
+        }
+
+        public override void DoChecks()
+        {
+            base.DoChecks();
+
+            PlayerTransform = GameObject.FindGameObjectWithTag(GameTags.PLAYER_TAG)?.transform;
         }
     }
 }

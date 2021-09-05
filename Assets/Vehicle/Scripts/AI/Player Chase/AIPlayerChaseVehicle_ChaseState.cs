@@ -3,9 +3,9 @@ using UnityEngine;
 
 namespace NowakArtur97.IntergalacticRacing.StateMachine
 {
-    public class AIVehicleChaseState : VehicleMoveState
+    public class AIPlayerChaseVehicle_ChaseState : Vehicle_MoveState
     {
-        private AIVehicle _aIVehicle;
+        private AIPlayerChaseVehicle _aIVehicle;
 
         private Transform _playerTransform;
 
@@ -13,7 +13,7 @@ namespace NowakArtur97.IntergalacticRacing.StateMachine
         private float _angleToTarget;
         private float _steerAmount;
 
-        public AIVehicleChaseState(AIVehicle Entity) : base(Entity)
+        public AIPlayerChaseVehicle_ChaseState(AIPlayerChaseVehicle Entity) : base(Entity)
         {
             _aIVehicle = Entity;
         }
@@ -30,7 +30,7 @@ namespace NowakArtur97.IntergalacticRacing.StateMachine
                 }
                 else
                 {
-                    Entity.StateMachine.ChangeState(_aIVehicle.AIVehicleIdleState);
+                    Entity.StateMachine.ChangeState(_aIVehicle.SlowDownState);
                 }
             }
         }
@@ -39,8 +39,7 @@ namespace NowakArtur97.IntergalacticRacing.StateMachine
         {
             base.PhysicsUpdate();
 
-            Vehicle.ApplyEngineForce(HasForwardVelocity
-                   ? Vehicle.VehicleData.forwardSpeed.accelerationFactor : Vehicle.VehicleData.backwardSpeed.accelerationFactor);
+            Vehicle.ApplyEngineForce(Vehicle.VehicleData.forwardSpeed.accelerationFactor);
         }
 
         private void Chase()

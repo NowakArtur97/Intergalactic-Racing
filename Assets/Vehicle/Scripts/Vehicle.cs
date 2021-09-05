@@ -11,6 +11,7 @@ namespace NowakArtur97.IntergalacticRacing.Core
         public WheelsTrailRendererHandler WheelsTrailRendererHandler { get; private set; }
         public WheelSmokePartcileHandler WheelSmokePartcileHandler { get; private set; }
         public VehicleSoundsHandler VehicleSoundsHandler { get; private set; }
+
         public VehicleChecks VehicleChecks { get; private set; }
 
         [HideInInspector] public Vector2 MovementInput;
@@ -58,7 +59,7 @@ namespace NowakArtur97.IntergalacticRacing.Core
             CoreContainer.Movement.SetVelocity(forwardVelocity + rightVelocity * driftFactor);
         }
 
-        public bool IsBraking() => VehicleChecks.CheckIsMovingBackward() && VelocityVsUp > 0;
+        public virtual bool IsBraking() => VelocityVsUp > 0;
 
         public bool IsTireScreeching() => IsBraking() || Mathf.Abs(VelocityVsRight) >= _vehicleData.tireScreechingMinVelocity;
     }

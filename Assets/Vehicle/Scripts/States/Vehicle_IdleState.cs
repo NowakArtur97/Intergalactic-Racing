@@ -1,14 +1,15 @@
 using NowakArtur97.IntergalacticRacing.Core;
+using NowakArtur97.IntergalacticRacing.Util;
 using UnityEngine;
 
 namespace NowakArtur97.IntergalacticRacing.StateMachine
 {
-    public abstract class VehicleIdleState : VehicleState
+    public abstract class Vehicle_IdleState : VehicleState
     {
         protected bool IsMoving { get; private set; }
         protected Transform PlayerTransform { get; private set; }
 
-        public VehicleIdleState(Vehicle Entity) : base(Entity)
+        public Vehicle_IdleState(Vehicle Entity) : base(Entity)
         {
         }
 
@@ -38,7 +39,7 @@ namespace NowakArtur97.IntergalacticRacing.StateMachine
             base.DoChecks();
 
             IsMoving = Vehicle.VehicleChecks.CheckIsMoving();
-            PlayerTransform = GameObject.FindGameObjectWithTag("Player").transform;
+            PlayerTransform = GameObject.FindGameObjectWithTag(GameTags.PLAYER_TAG)?.transform;
         }
     }
 }
