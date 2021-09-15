@@ -10,11 +10,19 @@ namespace NowakArtur97.IntergalacticRacing.Core
 
         private List<Checkpoint> _checkpoints;
 
-        private Dictionary<Vehicle, int> _vehicleCheckpointsProgress;
-        private Dictionary<Vehicle, int> _vehicleLapsProgress;
+        private Dictionary<Vehicle, int> _vehiclesCheckpointsProgress;
+        private Dictionary<Vehicle, int> _vehiclesLapsProgress;
+
+        private PositionsManager _positionsManager;
 
         // TODO: Get number of laps from Manager class (?)
         private int _numberOfLaps = 2;
+
+        private void Awake()
+        {
+            _vehiclesCheckpointsProgress = _vehicles.ToDictionary(vehicle => vehicle, checkpoint => 0);
+            _vehiclesLapsProgress = _vehicles.ToDictionary(vehicle => vehicle, checkpoint => 0);
+        }
 
         private void Start()
         {
@@ -29,21 +37,22 @@ namespace NowakArtur97.IntergalacticRacing.Core
                 checkpoint.SetCheckpointsManager(this);
             }
 
-            _vehicleCheckpointsProgress = _vehicles.ToDictionary(vehicle => vehicle, checkpoint => 0);
-            _vehicleLapsProgress = _vehicles.ToDictionary(vehicle => vehicle, checkpoint => 0);
+            _positionsManager = FindObjectOfType<PositionsManager>();
         }
 
         public void VehicleDriveThroughCheckpoint(Checkpoint checkpoint, Vehicle vehicle)
         {
-            int currentLap = _vehicleLapsProgress[vehicle];
+            int currentLap = _vehiclesLapsProgress[vehicle];
             int currentCheckpoint = _checkpoints.IndexOf(checkpoint);
-            int nextCheckpoint = _vehicleCheckpointsProgress[vehicle];
+            int nextCheckpoint = _vehiclesCheckpointsProgress[vehicle];
 
             if (IsFullLap(currentCheckpoint, nextCheckpoint))
             {
-                _vehicleCheckpointsProgress[vehicle] = 1;
+                _vehiclesCheckpointsProgress[vehicle] = 1;
                 currentLap++;
-                _vehicleLapsProgress[vehicle] = currentLap;
+                _vehiclesLapsProgress[vehicle] = currentLap;
+
+                _positionsManager.UpdatePositions(vehicle);
 
                 Debug.Log("Full Lap");
 
@@ -55,7 +64,10 @@ namespace NowakArtur97.IntergalacticRacing.Core
             else if (IsCorrectCheckpoint(currentCheckpoint, nextCheckpoint))
             {
                 Debug.Log("Correct Checkpoint");
-                _vehicleCheckpointsProgress[vehicle] = nextCheckpoint + 1;
+
+                _vehiclesCheckpointsProgress[vehicle] = nextCheckpoint + 1;
+
+                _positionsManager.UpdatePositions(vehicle);
             }
             else
             {
