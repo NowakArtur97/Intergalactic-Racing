@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 namespace NowakArtur97.IntergalacticRacing.Core
 {
-    public class Position : MonoBehaviour
+    public class PositionUI : MonoBehaviour
     {
         private readonly string DEFAULT_NAME_TEXT = "----------";
         private readonly string NAME_TEXT_UI_NAME = "Name Text (TMP)";

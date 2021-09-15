@@ -20,7 +20,12 @@ namespace NowakArtur97.IntergalacticRacing.Core
         {
             VehiclesPositions[vehicle]++;
 
-            _positionsUIManager.UpdatePositionUI(vehicle);
+            List<Vehicle> tempVehiclesPositions = VehiclesPositions
+                .OrderByDescending(position => position.Value)
+                .Select(position => position.Key)
+                .ToList();
+
+            _positionsUIManager.UpdatePositionsUI(tempVehiclesPositions);
         }
     }
 }

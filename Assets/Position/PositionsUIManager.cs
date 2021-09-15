@@ -1,43 +1,23 @@
 using System.Collections.Generic;
 using UnityEngine;
-using System.Linq;
 
 namespace NowakArtur97.IntergalacticRacing.Core
 {
     public class PositionsUIManager : MonoBehaviour
     {
-        private List<Position> _positions;
-        private Dictionary<Vehicle, int> _vehiclesPositions;
+        private List<PositionUI> _positionsUI;
 
-        private void Awake() => _positions = new List<Position>();
+        private void Awake() => _positionsUI = new List<PositionUI>();
 
-        private void Start()
+        public void UpdatePositionsUI(List<Vehicle> vehiclesPositions)
         {
-            _vehiclesPositions = FindObjectOfType<PositionsManager>().VehiclesPositions;
-
-            foreach (Transform positionTransform in transform)
+            for (int positionIndex = 0; positionIndex < vehiclesPositions.Count; positionIndex++)
             {
-                Position position = positionTransform.GetComponent<Position>();
-
-                _positions.Add(position);
-            }
-        }
-
-        public void UpdatePositionUI(Vehicle vehicle)
-        {
-            List<Vehicle> tempVehiclesPositions = _vehiclesPositions
-                .OrderByDescending(position => position.Value)
-                .ToDictionary(position => position.Key, position => position.Value)
-                .Keys
-                .ToList();
-
-            for (int positionIndex = 0; positionIndex < tempVehiclesPositions.Count; positionIndex++)
-            {
-                Position position = _positions[positionIndex];
+                PositionUI positionUI = _positionsUI[positionIndex];
 
                 // TODO: PositionsUIManager: Real name(?)
-                position.UpdateNameText(tempVehiclesPositions[positionIndex].gameObject.name);
-                position.UpdateImage(tempVehiclesPositions[positionIndex].GetComponent<SpriteRenderer>().sprite);
+                positionUI.UpdateNameText(vehiclesPositions[positionIndex].gameObject.name);
+                positionUI.UpdateImage(vehiclesPositions[positionIndex].GetComponent<SpriteRenderer>().sprite);
             }
         }
     }
