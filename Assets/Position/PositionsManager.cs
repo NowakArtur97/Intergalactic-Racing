@@ -8,13 +8,19 @@ namespace NowakArtur97.IntergalacticRacing.Core
     {
         [SerializeField] private List<Vehicle> _vehicles;
 
-        private Dictionary<Vehicle, int> _vehiclesPositions;
+        public Dictionary<Vehicle, int> VehiclesPositions { get; private set; }
 
-        private void Awake() => _vehiclesPositions = _vehicles.ToDictionary(vehicle => vehicle, checkpoint => 0);
+        private PositionsUIManager _positionsUIManager;
+
+        private void Awake() => VehiclesPositions = _vehicles.ToDictionary(vehicle => vehicle, checkpoint => 0);
+
+        private void Start() => _positionsUIManager = FindObjectOfType<PositionsUIManager>();
 
         public void UpdatePositions(Vehicle vehicle)
         {
-            _vehiclesPositions[vehicle]++;
+            VehiclesPositions[vehicle]++;
+
+            _positionsUIManager.UpdatePositionUI(vehicle);
         }
     }
 }

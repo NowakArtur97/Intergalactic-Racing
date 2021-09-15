@@ -22,12 +22,12 @@ namespace NowakArtur97.IntergalacticRacing.Core
         {
             _vehiclesCheckpointsProgress = _vehicles.ToDictionary(vehicle => vehicle, checkpoint => 0);
             _vehiclesLapsProgress = _vehicles.ToDictionary(vehicle => vehicle, checkpoint => 0);
+
+            _checkpoints = new List<Checkpoint>();
         }
 
         private void Start()
         {
-            _checkpoints = new List<Checkpoint>();
-
             foreach (Transform checkpointTransform in transform)
             {
                 Checkpoint checkpoint = checkpointTransform.GetComponent<Checkpoint>();
