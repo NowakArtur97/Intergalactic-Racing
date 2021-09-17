@@ -1,11 +1,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using System;
 
 namespace NowakArtur97.IntergalacticRacing.Core
 {
     public class CheckpointsManager : MonoBehaviour
     {
+        public event Action<Vehicle> PositionEvent;
+
         private List<Vehicle> _vehicles;
 
         private List<Checkpoint> _checkpoints;
@@ -13,15 +16,14 @@ namespace NowakArtur97.IntergalacticRacing.Core
         private Dictionary<Vehicle, int> _vehiclesCheckpointsProgress;
         private Dictionary<Vehicle, int> _vehiclesLapsProgress;
 
-        private PositionsManager _positionsManager;
-
-        // TODO: Get number of laps from Manager class (?)
-        private int _numberOfLaps = 2;
+        private int _numberOfLaps;
 
         private void Awake() => _checkpoints = new List<Checkpoint>();
 
         private void Start()
         {
+            _numberOfLaps = FindObjectOfType<LapsManager>().NumberOfLaps;
+
             _vehicles = FindObjectOfType<VehiclesManager>().Vehicles;
 
             _vehiclesCheckpointsProgress = _vehicles.ToDictionary(vehicle => vehicle, checkpoint => 0);
@@ -35,8 +37,6 @@ namespace NowakArtur97.IntergalacticRacing.Core
 
                 checkpoint.SetCheckpointsManager(this);
             }
-
-            _positionsManager = FindObjectOfType<PositionsManager>();
         }
 
         public void VehicleDriveThroughCheckpoint(Checkpoint checkpoint, Vehicle vehicle)
@@ -51,7 +51,7 @@ namespace NowakArtur97.IntergalacticRacing.Core
                 currentLap++;
                 _vehiclesLapsProgress[vehicle] = currentLap;
 
-                _positionsManager.UpdatePositions(vehicle);
+                PositionEvent?.Invoke(vehicle);
 
                 Debug.Log("Full Lap");
 
@@ -66,7 +66,7 @@ namespace NowakArtur97.IntergalacticRacing.Core
 
                 _vehiclesCheckpointsProgress[vehicle] = nextCheckpoint + 1;
 
-                _positionsManager.UpdatePositions(vehicle);
+                PositionEvent?.Invoke(vehicle);
             }
             else
             {
