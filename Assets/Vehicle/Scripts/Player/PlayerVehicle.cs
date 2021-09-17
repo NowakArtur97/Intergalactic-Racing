@@ -1,4 +1,3 @@
-using System;
 using NowakArtur97.IntergalacticRacing.Input;
 using NowakArtur97.IntergalacticRacing.StateMachine;
 using UnityEngine;
@@ -34,16 +33,7 @@ namespace NowakArtur97.IntergalacticRacing.Core
         private void Start()
         {
             StateMachine.Initialize(IdleState);
-
-            FindObjectOfType<CheckpointsManager>().FinishEvent += OnPlayerFinish;
-        }
-
-        private void OnPlayerFinish(Vehicle vehicle)
-        {
-            if (vehicle == this)
-            {
-                _stopMoving = true;
-            }
+            FindObjectOfType<CheckpointsManager>().FinishEvent += OnFinish; // TODO: Unsubscibe (?)
         }
 
         protected override void Update()
@@ -51,6 +41,15 @@ namespace NowakArtur97.IntergalacticRacing.Core
             base.Update();
 
             MovementInput = _stopMoving ? Vector2.zero : InputController.MovementInput;
+        }
+
+        // TODO: PlayerVehicle: Auto drive instead of stopping
+        private void OnFinish(Vehicle vehicle)
+        {
+            if (vehicle == this)
+            {
+                _stopMoving = true;
+            }
         }
 
         public override bool IsBraking() => base.IsBraking() && VehicleChecks.CheckIsMovingBackward();

@@ -6,7 +6,10 @@ namespace NowakArtur97.IntergalacticRacing.Core
 {
     public class FinishManager : MonoBehaviour
     {
-        public event Action AllFinishedEvent;
+        // TODO: REFACTOR
+        //public event Action AllFinishedEvent;
+
+        [SerializeField] private GameObject _standingManagerUIGO;
 
         private int _numberOfVehicles;
         private List<Vehicle> _finishedVehicles;
@@ -17,6 +20,7 @@ namespace NowakArtur97.IntergalacticRacing.Core
         {
             _numberOfVehicles = FindObjectOfType<VehiclesManager>().Vehicles.Count;
 
+            // TODO: Unsubscibe (?)
             FindObjectOfType<CheckpointsManager>().FinishEvent += OnVehiclePassFinish;
         }
 
@@ -26,7 +30,9 @@ namespace NowakArtur97.IntergalacticRacing.Core
 
             if (_finishedVehicles.Count == _numberOfVehicles)
             {
-                AllFinishedEvent?.Invoke();
+                // TODO: REFACTOR
+                //AllFinishedEvent?.Invoke();
+                _standingManagerUIGO.gameObject.SetActive(true);
             }
         }
     }

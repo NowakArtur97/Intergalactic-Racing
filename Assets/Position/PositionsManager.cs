@@ -9,21 +9,22 @@ namespace NowakArtur97.IntergalacticRacing.Core
     {
         public event Action<List<Vehicle>> PositionsEvent;
 
-        private Dictionary<Vehicle, PositionStruct> _vehiclesPositions;
+        public Dictionary<Vehicle, PositionStruct> VehiclesPositions { get; private set; }
 
         private void Start()
         {
-            _vehiclesPositions = FindObjectOfType<VehiclesManager>().Vehicles
+            VehiclesPositions = FindObjectOfType<VehiclesManager>().Vehicles
                 .ToDictionary(vehicle => vehicle, checkpoint => new PositionStruct(0, 0));
 
+            // TODO: Unsubscibe (?)
             FindObjectOfType<CheckpointsManager>().PositionEvent += OnUpdatePositions;
         }
 
         public void OnUpdatePositions(Vehicle vehicle)
         {
-            _vehiclesPositions[vehicle].CheckpointPassed(Time.time);
+            VehiclesPositions[vehicle].CheckpointPassed(Time.time);
 
-            PositionsEvent?.Invoke(_vehiclesPositions
+            PositionsEvent?.Invoke(VehiclesPositions
                 .OrderByDescending(position => position.Value.PassedCheckpoints)
                 .ThenBy(position => position.Value.LastCheckpointTime)
                 .Select(position => position.Key)

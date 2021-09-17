@@ -7,7 +7,7 @@ namespace NowakArtur97.IntergalacticRacing.Core
     {
         private List<PositionUI> _positionsUI;
 
-        // TODO:
+        // TODO: Unsubscibe (?)
         private void Start() => FindObjectOfType<PositionsManager>().PositionsEvent += UpdatePositionsUI;
 
         public void SetPositionsUI(List<PositionUI> positionsUI) => _positionsUI = positionsUI;

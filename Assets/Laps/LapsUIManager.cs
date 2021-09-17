@@ -17,6 +17,7 @@ namespace NowakArtur97.IntergalacticRacing.Core
             _lapUI.UpdateCurrentLapText(_currentLap);
             _lapUI.UpdateTotalLapsText(FindObjectOfType<LapsManager>().NumberOfLaps);
 
+            // TODO: Unsubscibe (?)
             FindObjectOfType<CheckpointsManager>().LapEvent += OnPassLap;
         }
 
