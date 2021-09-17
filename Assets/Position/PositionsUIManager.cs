@@ -7,6 +7,7 @@ namespace NowakArtur97.IntergalacticRacing.Core
     {
         private List<PositionUI> _positionsUI;
 
+        // TODO:
         private void Start() => FindObjectOfType<PositionsManager>().PositionsEvent += UpdatePositionsUI;
 
         public void SetPositionsUI(List<PositionUI> positionsUI) => _positionsUI = positionsUI;
@@ -22,7 +23,5 @@ namespace NowakArtur97.IntergalacticRacing.Core
                 positionUI.UpdateImage(vehiclesPositions[positionIndex].GetComponent<SpriteRenderer>().sprite);
             }
         }
-
-        private void OnDestroy() => FindObjectOfType<PositionsManager>().PositionsEvent -= UpdatePositionsUI;
     }
 }

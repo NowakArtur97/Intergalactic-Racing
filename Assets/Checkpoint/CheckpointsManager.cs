@@ -8,6 +8,7 @@ namespace NowakArtur97.IntergalacticRacing.Core
     public class CheckpointsManager : MonoBehaviour
     {
         public event Action<Vehicle> PositionEvent;
+        public event Action<Vehicle> LapEvent;
 
         private List<Vehicle> _vehicles;
 
@@ -52,6 +53,7 @@ namespace NowakArtur97.IntergalacticRacing.Core
                 _vehiclesLapsProgress[vehicle] = currentLap;
 
                 PositionEvent?.Invoke(vehicle);
+                LapEvent?.Invoke(vehicle);
 
                 Debug.Log("Full Lap");
 

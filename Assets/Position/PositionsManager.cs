@@ -29,7 +29,5 @@ namespace NowakArtur97.IntergalacticRacing.Core
                 .Select(position => position.Key)
                 .ToList());
         }
-
-        private void OnDestroy() => FindObjectOfType<CheckpointsManager>().PositionEvent -= UpdatePositions;
     }
 }

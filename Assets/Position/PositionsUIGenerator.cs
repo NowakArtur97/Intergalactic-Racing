@@ -5,8 +5,6 @@ namespace NowakArtur97.IntergalacticRacing.Core
 {
     public class PositionsUIGenerator : MonoBehaviour
     {
-        private readonly string DEFAULT_NAME_TEXT = "----------";
-
         [SerializeField] private GameObject _positonUI;
 
         private void Start() => GeneratePositionsUI(FindObjectOfType<VehiclesManager>().Vehicles);
