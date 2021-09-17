@@ -58,7 +58,7 @@ namespace NowakArtur97.IntergalacticRacing.Core
                     FinishEvent?.Invoke(vehicle);
                     //Debug.Log("Finish");
                 }
-                else
+                else if (currentLap < _numberOfLaps)
                 {
                     PositionEvent?.Invoke(vehicle);
                     LapEvent?.Invoke(vehicle);

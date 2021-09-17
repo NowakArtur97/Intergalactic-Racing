@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -14,6 +13,11 @@ namespace NowakArtur97.IntergalacticRacing.Core
         private void OnEnable()
         {
             Dictionary<Vehicle, PositionStruct> vehiclesPositions = FindObjectOfType<PositionsManager>().VehiclesPositions;
+
+            vehiclesPositions = vehiclesPositions
+                .OrderByDescending(position => position.Value.PassedCheckpoints)
+                .ThenBy(position => position.Value.LastCheckpointTime)
+                .ToDictionary(v => v.Key, v => v.Value);
 
             for (int positionIndex = 0; positionIndex < vehiclesPositions.Count; positionIndex++)
             {
