@@ -9,6 +9,7 @@ namespace NowakArtur97.IntergalacticRacing.Core
     {
         public event Action<Vehicle> PositionEvent;
         public event Action<Vehicle> LapEvent;
+        public event Action<Vehicle> FinishEvent;
 
         private List<Vehicle> _vehicles;
 
@@ -52,14 +53,17 @@ namespace NowakArtur97.IntergalacticRacing.Core
                 currentLap++;
                 _vehiclesLapsProgress[vehicle] = currentLap;
 
-                PositionEvent?.Invoke(vehicle);
-                LapEvent?.Invoke(vehicle);
-
-                Debug.Log("Full Lap");
-
                 if (HasFinished(currentLap, currentCheckpoint))
                 {
+                    FinishEvent?.Invoke(vehicle);
                     Debug.Log("Finish");
+                }
+                else
+                {
+                    PositionEvent?.Invoke(vehicle);
+                    LapEvent?.Invoke(vehicle);
+
+                    Debug.Log("Full Lap");
                 }
             }
             else if (IsCorrectCheckpoint(currentCheckpoint, nextCheckpoint))
@@ -81,6 +85,6 @@ namespace NowakArtur97.IntergalacticRacing.Core
         private bool IsFullLap(int currentCheckpoint, int nextCheckpoint) => currentCheckpoint == 0
             && nextCheckpoint == _checkpoints.Count;
 
-        private bool HasFinished(int currentLap, int currentCheckpoint) => currentLap == _numberOfLaps;
+        private bool HasFinished(int currentLap, int currentCheckpoint) => currentLap >= _numberOfLaps;
     }
 }

@@ -16,10 +16,10 @@ namespace NowakArtur97.IntergalacticRacing.Core
             _vehiclesPositions = FindObjectOfType<VehiclesManager>().Vehicles
                 .ToDictionary(vehicle => vehicle, checkpoint => new PositionStruct(0, 0));
 
-            FindObjectOfType<CheckpointsManager>().PositionEvent += UpdatePositions;
+            FindObjectOfType<CheckpointsManager>().PositionEvent += OnUpdatePositions;
         }
 
-        public void UpdatePositions(Vehicle vehicle)
+        public void OnUpdatePositions(Vehicle vehicle)
         {
             _vehiclesPositions[vehicle].CheckpointPassed(Time.time);
 

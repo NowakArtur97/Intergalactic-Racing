@@ -17,10 +17,10 @@ namespace NowakArtur97.IntergalacticRacing.Core
             _lapUI.UpdateCurrentLapText(_currentLap);
             _lapUI.UpdateTotalLapsText(FindObjectOfType<LapsManager>().NumberOfLaps);
 
-            FindObjectOfType<CheckpointsManager>().LapEvent += UpdateLaps;
+            FindObjectOfType<CheckpointsManager>().LapEvent += OnPassLap;
         }
 
-        private void UpdateLaps(Vehicle vehicle)
+        private void OnPassLap(Vehicle vehicle)
         {
             if (vehicle.CompareTag(PLAYER_TAG))
             {
