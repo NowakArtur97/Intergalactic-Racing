@@ -6,16 +6,17 @@ namespace NowakArtur97.IntergalacticRacing.Core
 {
     public class PositionsManager : MonoBehaviour
     {
-        [SerializeField] private List<Vehicle> _vehicles;
-
         private Dictionary<Vehicle, PositionStruct> _vehiclesPositions;
 
         private PositionsUIManager _positionsUIManager;
 
-        private void Awake() => _vehiclesPositions = _vehicles
-            .ToDictionary(vehicle => vehicle, checkpoint => new PositionStruct(0, 0));
+        private void Start()
+        {
+            _vehiclesPositions = FindObjectOfType<VehiclesManager>().Vehicles
+                .ToDictionary(vehicle => vehicle, checkpoint => new PositionStruct(0, 0));
 
-        private void Start() => _positionsUIManager = FindObjectOfType<PositionsUIManager>();
+            _positionsUIManager = FindObjectOfType<PositionsUIManager>();
+        }
 
         public void UpdatePositions(Vehicle vehicle)
         {

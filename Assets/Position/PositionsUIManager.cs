@@ -7,16 +7,7 @@ namespace NowakArtur97.IntergalacticRacing.Core
     {
         private List<PositionUI> _positionsUI;
 
-        private void Awake() => _positionsUI = new List<PositionUI>();
-
-        private void Start()
-        {
-            foreach (Transform positionTransform in transform)
-            {
-                PositionUI position = positionTransform.GetComponent<PositionUI>();
-                _positionsUI.Add(position);
-            }
-        }
+        public void SetPositionsUI(List<PositionUI> positionsUI) => _positionsUI = positionsUI;
 
         public void UpdatePositionsUI(List<Vehicle> vehiclesPositions)
         {

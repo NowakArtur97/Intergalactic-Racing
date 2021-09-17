@@ -6,7 +6,7 @@ namespace NowakArtur97.IntergalacticRacing.Core
 {
     public class CheckpointsManager : MonoBehaviour
     {
-        [SerializeField] private List<Vehicle> _vehicles;
+        private List<Vehicle> _vehicles;
 
         private List<Checkpoint> _checkpoints;
 
@@ -18,16 +18,15 @@ namespace NowakArtur97.IntergalacticRacing.Core
         // TODO: Get number of laps from Manager class (?)
         private int _numberOfLaps = 2;
 
-        private void Awake()
-        {
-            _vehiclesCheckpointsProgress = _vehicles.ToDictionary(vehicle => vehicle, checkpoint => 0);
-            _vehiclesLapsProgress = _vehicles.ToDictionary(vehicle => vehicle, checkpoint => 0);
-
-            _checkpoints = new List<Checkpoint>();
-        }
+        private void Awake() => _checkpoints = new List<Checkpoint>();
 
         private void Start()
         {
+            _vehicles = FindObjectOfType<VehiclesManager>().Vehicles;
+
+            _vehiclesCheckpointsProgress = _vehicles.ToDictionary(vehicle => vehicle, checkpoint => 0);
+            _vehiclesLapsProgress = _vehicles.ToDictionary(vehicle => vehicle, checkpoint => 0);
+
             foreach (Transform checkpointTransform in transform)
             {
                 Checkpoint checkpoint = checkpointTransform.GetComponent<Checkpoint>();
