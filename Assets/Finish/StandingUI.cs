@@ -31,7 +31,7 @@ namespace NowakArtur97.IntergalacticRacing.Core
             _image = transform.Find(IMAGE_UI_NAME).GetComponentInChildren<Image>();
         }
 
-        public void UpdateUI(Vehicle vehicle, int position, float time)
+        public void UpdateUI(Vehicle vehicle, int position, double time)
         {
             // TODO: PositionUI: Get Player name from vehicle
             string playerName = vehicle.gameObject.name;
@@ -56,7 +56,7 @@ namespace NowakArtur97.IntergalacticRacing.Core
             _nameText.text = name;
         }
 
-        private void UpdateTimeText(float time, bool isPlayer)
+        private void UpdateTimeText(double time, bool isPlayer)
         {
             _timeText.color = isPlayer ? _playerTextColor : _aITextColor;
             _timeText.text = time + "";

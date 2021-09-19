@@ -18,11 +18,12 @@ namespace NowakArtur97.IntergalacticRacing.Core
 
             // TODO: Unsubscibe (?)
             FindObjectOfType<CheckpointsManager>().PositionEvent += OnUpdatePositions;
+            FindObjectOfType<CheckpointsManager>().FinishEvent += OnUpdatePositions;
         }
 
         public void OnUpdatePositions(Vehicle vehicle)
         {
-            VehiclesPositions[vehicle].CheckpointPassed(Time.time);
+            VehiclesPositions[vehicle].CheckpointPassed(Math.Round(Time.time, 2));
 
             PositionsEvent?.Invoke(VehiclesPositions
                 .OrderByDescending(position => position.Value.PassedCheckpoints)

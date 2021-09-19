@@ -3,7 +3,7 @@ namespace NowakArtur97.IntergalacticRacing.Core
     public class PositionStruct
     {
         public int PassedCheckpoints { get; private set; }
-        public float LastCheckpointTime { get; private set; }
+        public double LastCheckpointTime { get; private set; }
 
         public PositionStruct(int passedCheckpoints, float lastCheckpointTime)
         {
@@ -11,7 +11,7 @@ namespace NowakArtur97.IntergalacticRacing.Core
             LastCheckpointTime = lastCheckpointTime;
         }
 
-        public void CheckpointPassed(float time)
+        public void CheckpointPassed(double time)
         {
             PassedCheckpoints++;
             LastCheckpointTime = time;
