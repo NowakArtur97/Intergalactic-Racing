@@ -8,8 +8,6 @@ namespace NowakArtur97.IntergalacticRacing.Core
     {
         [SerializeField] private GameObject _standingUI;
 
-        //private void Start() => FindObjectOfType<FinishManager>().AllFinishedEvent += OnAllFinished;
-
         private void OnEnable()
         {
             Dictionary<Vehicle, PositionStruct> vehiclesPositions = FindObjectOfType<PositionsManager>().VehiclesPositions;
@@ -29,13 +27,7 @@ namespace NowakArtur97.IntergalacticRacing.Core
 
                 standingGO.transform.parent = transform;
 
-                StandingUI standingUI = standingGO.GetComponent<StandingUI>();
-
-                standingUI.UpdatePositionText(positionIndex + 1);
-                // TODO: PositionsUIManager: Real name(?)
-                standingUI.UpdateNameText(vehicle.gameObject.name);
-                standingUI.UpdateTimeText(position.LastCheckpointTime);
-                standingUI.UpdateImage(vehicle.GetComponent<SpriteRenderer>().sprite);
+                standingGO.GetComponent<StandingUI>().Update(vehicle, positionIndex + 1, position.LastCheckpointTime);
             }
         }
     }

@@ -6,6 +6,13 @@ namespace NowakArtur97.IntergalacticRacing.Core
 {
     public class StandingUI : MonoBehaviour
     {
+        // PositionUI: Get Player name from menu
+        [SerializeField] private string _playerName = "Player Vehicle";
+
+        [Header("Colors")]
+        [SerializeField] private Color _playerTextColor = Color.blue;
+        [SerializeField] private Color _aITextColor = Color.red;
+
         private readonly string POSITION_TEXT_UI_NAME = "Position Text (TMP)";
         private readonly string NAME_TEXT_UI_NAME = "Name Text (TMP)";
         private readonly string TIME_TEXT_UI_NAME = "Time Text (TMP)";
@@ -24,12 +31,37 @@ namespace NowakArtur97.IntergalacticRacing.Core
             _image = transform.Find(IMAGE_UI_NAME).GetComponentInChildren<Image>();
         }
 
-        public void UpdatePositionText(int text) => _positionText.text = text + ".";
+        public void Update(Vehicle vehicle, int position, float time)
+        {
+            // TODO: PositionUI: Get Player name from vehicle
+            string playerName = vehicle.gameObject.name;
 
-        public void UpdateNameText(string text) => _timeText.text = text;
+            bool isPlayer = _playerName.Equals(playerName);
 
-        public void UpdateTimeText(float time) => _nameText.text = time + "";
+            UpdatePositionText(position, isPlayer);
+            UpdateNameText(playerName, isPlayer);
+            UpdateTimeText(time, isPlayer);
+            UpdateImage(vehicle.GetComponent<SpriteRenderer>().sprite);
+        }
 
-        public void UpdateImage(Sprite sprite) => _image.sprite = sprite;
+        private void UpdatePositionText(int text, bool isPlayer)
+        {
+            _positionText.color = isPlayer ? _playerTextColor : _aITextColor;
+            _positionText.text = text + ".";
+        }
+
+        private void UpdateNameText(string name, bool isPlayer)
+        {
+            _nameText.color = isPlayer ? _playerTextColor : _aITextColor;
+            _nameText.text = name;
+        }
+
+        private void UpdateTimeText(float time, bool isPlayer)
+        {
+            _timeText.color = isPlayer ? _playerTextColor : _aITextColor;
+            _timeText.text = time + "";
+        }
+
+        private void UpdateImage(Sprite sprite) => _image.sprite = sprite;
     }
 }

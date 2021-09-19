@@ -53,6 +53,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62fb5f3281cd48345844e4bb6703a58b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _playerName: Player Vehicle
+  _playerTextColor: {r: 0.22352941, g: 0.67058825, b: 1, a: 1}
+  _aITextColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!114 &539668260972673143
 MonoBehaviour:
   m_ObjectHideFlags: 0

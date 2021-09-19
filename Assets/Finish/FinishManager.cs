@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,9 +5,6 @@ namespace NowakArtur97.IntergalacticRacing.Core
 {
     public class FinishManager : MonoBehaviour
     {
-        // TODO: REFACTOR
-        //public event Action AllFinishedEvent;
-
         [SerializeField] private GameObject _standingManagerUIGO;
 
         private int _numberOfVehicles;
