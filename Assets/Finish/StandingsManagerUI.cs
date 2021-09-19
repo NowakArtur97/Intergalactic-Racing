@@ -27,7 +27,7 @@ namespace NowakArtur97.IntergalacticRacing.Core
 
                 standingGO.transform.parent = transform;
 
-                standingGO.GetComponent<StandingUI>().Update(vehicle, positionIndex + 1, position.LastCheckpointTime);
+                standingGO.GetComponent<StandingUI>().UpdateUI(vehicle, positionIndex + 1, position.LastCheckpointTime);
             }
         }
     }

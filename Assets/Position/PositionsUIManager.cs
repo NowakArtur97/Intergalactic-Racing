@@ -8,17 +8,17 @@ namespace NowakArtur97.IntergalacticRacing.Core
         private List<PositionUI> _positionsUI;
 
         // TODO: Unsubscibe (?)
-        private void Start() => FindObjectOfType<PositionsManager>().PositionsEvent += UpdatePositionsUI;
+        private void Start() => FindObjectOfType<PositionsManager>().PositionsEvent += OnPositionsChanged;
 
         public void SetPositionsUI(List<PositionUI> positionsUI) => _positionsUI = positionsUI;
 
-        public void UpdatePositionsUI(List<Vehicle> vehiclesPositions)
+        public void OnPositionsChanged(List<Vehicle> vehiclesPositions)
         {
             for (int positionIndex = 0; positionIndex < vehiclesPositions.Count; positionIndex++)
             {
                 PositionUI positionUI = _positionsUI[positionIndex];
 
-                positionUI.Update(vehiclesPositions[positionIndex], positionIndex + 1);
+                positionUI.UpdateUI(vehiclesPositions[positionIndex], positionIndex + 1);
             }
         }
     }

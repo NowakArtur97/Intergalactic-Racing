@@ -31,7 +31,7 @@ namespace NowakArtur97.IntergalacticRacing.Core
             _image = transform.Find(IMAGE_UI_NAME).GetComponentInChildren<Image>();
         }
 
-        public void Update(Vehicle vehicle, int position, float time)
+        public void UpdateUI(Vehicle vehicle, int position, float time)
         {
             // TODO: PositionUI: Get Player name from vehicle
             string playerName = vehicle.gameObject.name;

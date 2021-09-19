@@ -21,7 +21,7 @@ namespace NowakArtur97.IntergalacticRacing.Core
 
                 PositionUI positionUI = positionGO.GetComponent<PositionUI>();
 
-                positionUI.Update(vehicles[index], index + 1);
+                positionUI.UpdateUI(vehicles[index], index + 1);
 
                 positionsUI.Add(positionUI);
             }

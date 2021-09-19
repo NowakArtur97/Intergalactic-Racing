@@ -1,5 +1,6 @@
 using NowakArtur97.IntergalacticRacing.Input;
 using NowakArtur97.IntergalacticRacing.StateMachine;
+using System;
 using UnityEngine;
 
 namespace NowakArtur97.IntergalacticRacing.Core
@@ -7,6 +8,7 @@ namespace NowakArtur97.IntergalacticRacing.Core
     [RequireComponent(typeof(PlayerInputController))]
     public class PlayerVehicle : Vehicle
     {
+        public event Action PlayerFinished;
         private bool _stopMoving;
 
         public Vehicle_IdleState IdleState { get; private set; }
@@ -49,6 +51,7 @@ namespace NowakArtur97.IntergalacticRacing.Core
             if (vehicle == this)
             {
                 _stopMoving = true;
+                PlayerFinished?.Invoke();
             }
         }
 
