@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace NowakArtur97.IntergalacticRacing.Core
 {
-    public class StandingManagerUI : MonoBehaviour
+    public class StandingsManagerUI : MonoBehaviour
     {
         [SerializeField] private GameObject _standingUI;
 

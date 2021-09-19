@@ -58,7 +58,7 @@ namespace NowakArtur97.IntergalacticRacing.Core
                     FinishEvent?.Invoke(vehicle);
                     //Debug.Log("Finish");
                 }
-                else if (currentLap < _numberOfLaps)
+                else if (HasLapsToGo(currentLap))
                 {
                     PositionEvent?.Invoke(vehicle);
                     LapEvent?.Invoke(vehicle);
@@ -66,7 +66,7 @@ namespace NowakArtur97.IntergalacticRacing.Core
                     //Debug.Log("Full Lap");
                 }
             }
-            else if (IsCorrectCheckpoint(currentCheckpoint, nextCheckpoint))
+            else if (IsCorrectCheckpoint(currentCheckpoint, nextCheckpoint) && HasLapsToGo(currentLap))
             {
                 //Debug.Log("Correct Checkpoint");
 
@@ -86,5 +86,7 @@ namespace NowakArtur97.IntergalacticRacing.Core
             && nextCheckpoint == _checkpoints.Count;
 
         private bool HasFinished(int currentLap, int currentCheckpoint) => currentLap == _numberOfLaps;
+
+        private bool HasLapsToGo(int currentLap) => currentLap < _numberOfLaps;
     }
 }
