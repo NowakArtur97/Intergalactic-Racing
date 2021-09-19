@@ -1,11 +1,10 @@
+using NowakArtur97.IntergalacticRacing.Util;
 using UnityEngine;
 
 namespace NowakArtur97.IntergalacticRacing.Core
 {
     public class LapsUIManager : MonoBehaviour
     {
-        private const string PLAYER_TAG = "Player";
-
         private LapsUI _lapUI;
 
         private int _currentLap = 1;
@@ -23,7 +22,7 @@ namespace NowakArtur97.IntergalacticRacing.Core
 
         private void OnPassLap(Vehicle vehicle)
         {
-            if (vehicle.CompareTag(PLAYER_TAG))
+            if (vehicle.CompareTag(GameTags.PLAYER_TAG))
             {
                 _lapUI.UpdateCurrentLapText(++_currentLap);
             }

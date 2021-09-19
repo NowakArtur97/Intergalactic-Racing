@@ -43,6 +43,8 @@ namespace NowakArtur97.IntergalacticRacing.Core
 
         public void ApplySteering(float turnFactor)
         {
+            _rotationAngle = transform.localRotation.eulerAngles.z - 360; // correction for collisions
+
             float minSpeedBeforeAllowTurningFactor = CoreContainer.Movement.CurrentVelocity.magnitude / _vehicleData.magnitudeDivider;
             minSpeedBeforeAllowTurningFactor = Mathf.Clamp01(minSpeedBeforeAllowTurningFactor);
 
