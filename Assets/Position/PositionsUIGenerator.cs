@@ -15,18 +15,13 @@ namespace NowakArtur97.IntergalacticRacing.Core
 
             for (int index = 0; index < vehicles.Count; index++)
             {
-                Vehicle vehicle = vehicles[index];
-
                 GameObject positionGO = Instantiate(_positonUI, transform.position, Quaternion.identity);
 
                 positionGO.transform.parent = transform;
 
                 PositionUI positionUI = positionGO.GetComponent<PositionUI>();
 
-                // TODO: PositionsUIManager: Real name(?)
-                positionUI.UpdatePositionText(index + 1);
-                positionUI.UpdateNameText(vehicle.gameObject.name);
-                positionUI.UpdateImage(vehicle.GetComponent<SpriteRenderer>().sprite);
+                positionUI.Update(vehicles[index], index + 1);
 
                 positionsUI.Add(positionUI);
             }

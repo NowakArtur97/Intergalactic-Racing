@@ -18,9 +18,7 @@ namespace NowakArtur97.IntergalacticRacing.Core
             {
                 PositionUI positionUI = _positionsUI[positionIndex];
 
-                // TODO: PositionsUIManager: Real name(?)
-                positionUI.UpdateNameText(vehiclesPositions[positionIndex].gameObject.name);
-                positionUI.UpdateImage(vehiclesPositions[positionIndex].GetComponent<SpriteRenderer>().sprite);
+                positionUI.Update(vehiclesPositions[positionIndex], positionIndex + 1);
             }
         }
     }

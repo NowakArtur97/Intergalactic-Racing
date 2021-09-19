@@ -6,6 +6,13 @@ namespace NowakArtur97.IntergalacticRacing.Core
 {
     public class PositionUI : MonoBehaviour
     {
+        // PositionUI: Get Player name from menu
+        [SerializeField] private string _playerName = "Player Vehicle";
+
+        [Header("Colors")]
+        [SerializeField] private Color _playerTextColor = Color.blue;
+        [SerializeField] private Color _aITextColor = Color.red;
+
         private readonly string POSITION_TEXT_UI_NAME = "Position Text (TMP)";
         private readonly string NAME_TEXT_UI_NAME = "Name Text (TMP)";
         private readonly string IMAGE_UI_NAME = "Vehicle Image";
@@ -21,10 +28,30 @@ namespace NowakArtur97.IntergalacticRacing.Core
             _image = transform.Find(IMAGE_UI_NAME).GetComponentInChildren<Image>();
         }
 
-        public void UpdatePositionText(int text) => _positionText.text = text + ".";
+        public void Update(Vehicle vehicle, int position)
+        {
+            // TODO: PositionUI: Get Player name from vehicle
+            string playerName = vehicle.gameObject.name;
 
-        public void UpdateNameText(string text) => _nameText.text = text;
+            bool isPlayer = _playerName.Equals(playerName);
 
-        public void UpdateImage(Sprite sprite) => _image.sprite = sprite;
+            UpdatePositionText(position, isPlayer);
+            UpdateNameText(playerName, isPlayer);
+            UpdateImage(vehicle.GetComponent<SpriteRenderer>().sprite);
+        }
+
+        private void UpdatePositionText(int text, bool isPlayer)
+        {
+            _positionText.color = isPlayer ? _playerTextColor : _aITextColor;
+            _positionText.text = text + ".";
+        }
+
+        private void UpdateNameText(string name, bool isPlayer)
+        {
+            _nameText.color = isPlayer ? _playerTextColor : _aITextColor;
+            _nameText.text = name;
+        }
+
+        private void UpdateImage(Sprite sprite) => _image.sprite = sprite;
     }
 }
