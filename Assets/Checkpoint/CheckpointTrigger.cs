@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace NowakArtur97.IntergalacticRacing.Core
 {
-    public class Checkpoint : MonoBehaviour
+    public class CheckpointTrigger : MonoBehaviour
     {
         private CheckpointsManager _checkpointsManager;
 

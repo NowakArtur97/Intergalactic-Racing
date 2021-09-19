@@ -13,14 +13,14 @@ namespace NowakArtur97.IntergalacticRacing.Core
 
         private List<Vehicle> _vehicles;
 
-        private List<Checkpoint> _checkpoints;
+        private List<CheckpointTrigger> _checkpoints;
 
         private Dictionary<Vehicle, int> _vehiclesCheckpointsProgress;
         private Dictionary<Vehicle, int> _vehiclesLapsProgress;
 
         private int _numberOfLaps;
 
-        private void Awake() => _checkpoints = new List<Checkpoint>();
+        private void Awake() => _checkpoints = new List<CheckpointTrigger>();
 
         private void Start()
         {
@@ -33,7 +33,7 @@ namespace NowakArtur97.IntergalacticRacing.Core
 
             foreach (Transform checkpointTransform in transform)
             {
-                Checkpoint checkpoint = checkpointTransform.GetComponent<Checkpoint>();
+                CheckpointTrigger checkpoint = checkpointTransform.GetComponent<CheckpointTrigger>();
 
                 _checkpoints.Add(checkpoint);
 
@@ -41,7 +41,7 @@ namespace NowakArtur97.IntergalacticRacing.Core
             }
         }
 
-        public void VehicleDriveThroughCheckpoint(Checkpoint checkpoint, Vehicle vehicle)
+        public void VehicleDriveThroughCheckpoint(CheckpointTrigger checkpoint, Vehicle vehicle)
         {
             int currentLap = _vehiclesLapsProgress[vehicle];
             int currentCheckpoint = _checkpoints.IndexOf(checkpoint);
