@@ -6,6 +6,7 @@ namespace NowakArtur97.IntergalacticRacing.Core
     public class FinishManager : MonoBehaviour
     {
         [SerializeField] private GameObject _standingManagerUIGO;
+        [SerializeField] private GameObject _replayButtonGO;
 
         private int _numberOfVehicles;
         private List<Vehicle> _finishedVehicles;
@@ -29,6 +30,7 @@ namespace NowakArtur97.IntergalacticRacing.Core
                 // TODO: REFACTOR
                 //AllFinishedEvent?.Invoke();
                 _standingManagerUIGO.gameObject.SetActive(true);
+                _replayButtonGO.gameObject.SetActive(true);
             }
         }
     }
