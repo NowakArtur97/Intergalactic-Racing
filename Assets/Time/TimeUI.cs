@@ -1,3 +1,4 @@
+using NowakArtur97.IntergalacticRacing.Util;
 using System;
 using TMPro;
 using UnityEngine;
@@ -25,7 +26,7 @@ namespace NowakArtur97.IntergalacticRacing.Core
         {
             if (_shouldUpdateTime)
             {
-                _totalTimeText.text = Math.Round(Time.time, 2) + "";
+                _totalTimeText.text = TimeUtil.ToTime(Time.time);
             }
         }
 

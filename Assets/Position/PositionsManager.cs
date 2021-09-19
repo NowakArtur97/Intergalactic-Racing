@@ -23,7 +23,7 @@ namespace NowakArtur97.IntergalacticRacing.Core
 
         public void OnUpdatePositions(Vehicle vehicle)
         {
-            VehiclesPositions[vehicle].CheckpointPassed(Math.Round(Time.time, 2));
+            VehiclesPositions[vehicle].CheckpointPassed(Time.time);
 
             PositionsEvent?.Invoke(VehiclesPositions
                 .OrderByDescending(position => position.Value.PassedCheckpoints)
