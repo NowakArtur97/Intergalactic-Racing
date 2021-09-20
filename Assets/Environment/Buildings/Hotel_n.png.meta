@@ -1,13 +1,13 @@
 fileFormatVersion: 2
-guid: b46887c4f69d77d44953c43d1905c660
+guid: 6b59f8a66c4171044812238f1f541692
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -5159538686922767073
-    second: Hotel_0
+      213: 4294364185012089437
+    second: Hotel_n_0
   - first:
-      213: -7743440821625544694
-    second: Hotel_1
+      213: -7374781252929405205
+    second: Hotel_n_1
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -109,7 +109,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Hotel_0
+      name: Hotel_n_0
       rect:
         serializedVersion: 2
         x: 0
@@ -123,14 +123,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f15451196e2a568b0800000000000000
-      internalID: -5159538686922767073
+      spriteID: d523ec74975a89b30800000000000000
+      internalID: 4294364185012089437
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Hotel_1
+      name: Hotel_n_1
       rect:
         serializedVersion: 2
         x: 154
@@ -144,8 +144,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a0020c76995c98490800000000000000
-      internalID: -7743440821625544694
+      spriteID: beebee2168387a990800000000000000
+      internalID: -7374781252929405205
       vertices: []
       indices: 
       edges: []
@@ -159,9 +159,7 @@ TextureImporter:
     indices: 
     edges: []
     weights: []
-    secondaryTextures:
-    - texture: {fileID: 2800000, guid: 6b59f8a66c4171044812238f1f541692, type: 3}
-      name: _NormalMap
+    secondaryTextures: []
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

@@ -1,5 +1,4 @@
 using NowakArtur97.IntergalacticRacing.Util;
-using System;
 using TMPro;
 using UnityEngine;
 
@@ -20,7 +19,15 @@ namespace NowakArtur97.IntergalacticRacing.Core
         }
 
         // TODO: Unsubscibe (?)
-        private void Start() => FindObjectOfType<PlayerVehicle>().PlayerFinished += OnPlayerFinished;
+        private void Start()
+        {
+            PlayerVehicle player = FindObjectOfType<PlayerVehicle>();
+
+            if (player != null)
+            {
+                player.PlayerFinished += OnPlayerFinished;
+            }
+        }
 
         private void Update()
         {
